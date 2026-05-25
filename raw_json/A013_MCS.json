@@ -1,0 +1,74 @@
+{
+  "disease_code": "A013",
+  "disease_name_en": "Mast cell sarcoma",
+  "disease_name_zh": "肥大细胞肉瘤",
+  "abbreviation": "MCS",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A013_E1",
+      "description": "局限性浸润性病变，由高度异型肥大细胞组成，表达KIT(CD117)和类胰蛋白酶",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "A013_E1a",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "biopsy.architecture_effacement",
+              "operator": "is_true",
+              "value": null
+            },
+            {
+              "field": "biopsy.CD117_positive",
+              "operator": "is_true",
+              "value": null
+            },
+            {
+              "field": "biopsy.tryptase_positive",
+              "operator": "is_true",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A013_E2",
+      "description": "经典型MCS不满足系统性肥大细胞增多症标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_SM_criteria_met",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A013_D1",
+      "description": "免疫组化CD2/CD25/CD30表达",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "fcm.CD2",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fcm.CD25",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fcm.CD30",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+	"disease_code": "A042",
+	"disease_name_en": "Acute basophilic leukaemia",
+	"disease_name_zh": "急性嗜碱性粒细胞白血病",
+	"abbreviation": "ABL",
+	"scoring_logic": "all_essential",
+	"essential_criteria": [
+		{
+			"id": "A042_E1",
+			"description": "原始细胞≥20%，伴未成熟和成熟嗜碱性粒细胞增多",
+			"logic": "AND",
+			"conditions": [
+				{
+					"field": "bma.blasts_pct",
+					"operator": ">=",
+					"value": 20
+				},
+				{
+					"field": "bma.basophilia",
+					"operator": "is_true",
+					"value": true
+				}
+			]
+		
+			
+		},
+		{
+			"id": "A042_E2",
+			"description": "原始细胞/嗜碱粒细胞甲苯胺蓝异染性阳性，MPO/苏丹黑B/NSE阴性",
+			"logic": "OR",
+			"conditions": [
+				{
+					"field": "judgment.toluidine_blue",
+					"operator": "is_true",
+					"value": true
+				},
+				{
+					"field": "judgment.pox",
+					"operator": "is_true",
+					"value": true
+				},
+				{
+					"field": "judgment.sbb",
+					"operator": "is_true",
+					"value": true
+				},
+				{
+					"field": "judgment.nae",
+					"operator": "is_true",
+					"value": true
+				}
+			]
+		},
+		{
+			"id": "A042_E3",
+			"description": "至少两种髓系相关标记物阳性",
+			"logic": "OR",
+			"conditions": [
+				{
+					"field": "judgment.myeloid_blast_immunophenotype_criteria_met",
+					"operator": "is_true",
+					"value": true
+				}
+			]
+		},
+		{
+			"id": "A042_E4",
+			"description": "不满足伴定义性遗传学异常AML类型诊断标准",
+			"logic": "OR",
+			"conditions": [
+				{
+					"field": "judgment.no_AML_genetic_subtype",
+					"operator": "is_true",
+					"value": true
+				}
+			]
+		},
+		{
+			"id": "A042_E_noTx",
+			"description": "无细胞毒性治疗暴露史",
+			"logic": "OR",
+			"conditions": [
+				{
+					"field": "judgment.no_cytotoxic_therapy_history",
+					"operator": "is_true",
+					"value": true
+				},
+				{
+					"field": "basic.prior_cytotoxic_therapy",
+					"operator": "is_negative",
+					"value": true
+				}
+			]
+		}
+	],
+	"desirable_criteria": [
+		{
+			"id": "A042_D1",
+			"description": "原始细胞CD9和/或CD203c阳性，HLA-DR阴性",
+			"logic": "OR",
+			"conditions": [
+				{
+					"field": "fcm.CD9",
+					"operator": "is_positive",
+					"value": true
+				},
+				{
+					"field": "fcm.CD203c",
+					"operator": "is_positive",
+					"value": true
+				}
+			]
+		}
+	]
+}

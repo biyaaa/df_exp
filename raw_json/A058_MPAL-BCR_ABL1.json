@@ -1,0 +1,98 @@
+{
+  "disease_code": "A058",
+  "disease_name_en": "Mixed-phenotype acute leukaemia with BCR::ABL1 fusion",
+  "disease_name_zh": "BCR::ABL1融合混合表型急性白血病",
+  "abbreviation": "MPAL-BCR::ABL1",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A058_E1",
+      "description": "骨髓和/或外周血原始细胞≥20%，免疫表型符合MPAL标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "bma.blast_pct",
+              "operator": ">=",
+              "value": 20
+            },
+            {
+              "field": "judgment.MPAL_immunophenotype",
+              "operator": "is_true",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A058_E2",
+      "description": "初诊时检测到BCR::ABL1和/或t(9;22)",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.BCR_ABL1",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fish.BCR_ABL1",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "caa.t_9_22",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A058_E3",
+      "description": "既往和后续无CML证据",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_CML_features_before_after",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A058_E_noTx",
+      "description": "无细胞毒性治疗暴露史",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_cytotoxic_therapy_history",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "basic.prior_cytotoxic_therapy",
+          "operator": "is_negative",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A058_D1",
+      "description": "确定BCR::ABL1转录本亚型及定量基线",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.BCR_ABL1_type",
+          "operator": "not_null",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

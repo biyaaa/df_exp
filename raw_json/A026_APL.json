@@ -1,0 +1,79 @@
+{
+  "disease_code": "A026",
+  "disease_name_en": "Acute promyelocytic leukaemia with PML::RARA fusion",
+  "disease_name_zh": "PML::RARA融合急性早幼粒细胞白血病",
+  "abbreviation": "APL",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A026_E1",
+      "description": "外周血和/或骨髓异型早幼粒细胞增多的髓系肿瘤（可<20%）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.atypical_promyelocytes_increased",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.hypergranular_promyelocyte",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A026_E2",
+      "description": "检测到PML::RARA",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.PML_RARA",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fish.PML_RARA",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A026_E_noTx",
+      "description": "无细胞毒性治疗暴露史",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_cytotoxic_therapy_history",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "basic.prior_cytotoxic_therapy",
+          "operator": "is_negative",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A026_D1",
+      "description": "检测到t(15;17)(q24;q21)",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "caa.t_15_17",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fish.t_15_17",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

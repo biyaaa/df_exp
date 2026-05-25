@@ -1,0 +1,145 @@
+{
+  "disease_code": "A021",
+  "disease_name_en": "Childhood myelodysplastic neoplasm with increased blasts",
+  "disease_name_zh": "儿童原始细胞增多型骨髓增生异常肿瘤",
+  "abbreviation": "Pediatric MDS-IB",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A021_E_cytopenia",
+      "description": "一个或多个细胞系血细胞减少",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pba.anemia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "pba.thrombocytopenia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "judgment.leukocytopenia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "pba.HGB",
+          "operator": "<",
+          "value": 120
+        },
+        {
+          "field": "pba.PLT",
+          "operator": "<",
+          "value": 100
+        }
+      ]
+    },
+    {
+      "id": "A021_E_dysplasia",
+      "description": "一个或多个细胞系发育异常",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.myeloid_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.granulocytic_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.erythroid_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.megakaryocytic_dysplasia",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A021_E3",
+      "description": "骨髓原始细胞≥5%且<20%，和/或外周血原始细胞≥2%且<20%",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "bma.blast_pct",
+              "operator": ">=",
+              "value": 5
+            },
+            {
+              "field": "bma.blast_pct",
+              "operator": "<",
+              "value": 20
+            }
+          ]
+        },
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "pba.blast_pct",
+              "operator": ">=",
+              "value": 2
+            },
+            {
+              "field": "pba.blast_pct",
+              "operator": "<",
+              "value": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A021_E4",
+      "description": "排除唐氏综合征、幼年型粒单核细胞白血病及伴定义性遗传学异常AML",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_down_no_JMML_no_AML_genetic",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A021_D_clonal",
+      "description": "检测到克隆性细胞遗传学和/或分子异常",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.clonal_cytogenetic_molecular",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "caa.clonal_abnormality",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "pcr.clonal_mutation",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+	"disease_code": "A041",
+	"disease_name_en": "Acute myeloid leukaemia with maturation",
+	"disease_name_zh": "急性髓系白血病伴成熟型",
+	"abbreviation": "AML-M2",
+	"scoring_logic": "all_essential",
+	"essential_criteria": [
+		{
+			"id": "A041_E1",
+			"description": "骨髓和/或外周血原始细胞≥20%，粒细胞成熟形态≥10%，有髓系分化细胞化学证据",
+			"logic": "AND",
+			"conditions": [
+				{
+					"field": "bma.blasts_pct",
+					"operator": ">=",
+					"value": 20
+				},
+				{
+					"field": "bma.maturing_granulocytes_pct",
+					"operator": ">=",
+					"value": 10
+				}
+			]
+		},
+		{
+			"id": "A041_E2",
+			"description": "至少两种髓系相关标记物阳性（MPO/CD13/CD33/CD117）",
+			"logic": "OR",
+			"conditions": [
+				{
+					"field": "judgment.myeloid_blast_immunophenotype_criteria_met",
+					"operator": "is_true",
+					"value": true
+				}
+			]
+		},
+		{
+			"id": "A041_E3",
+			"description": "单核系细胞占骨髓细胞<20%",
+			"logic": "OR",
+			"conditions": [
+				{
+					"field": "bma.monocytic_lineage_pct",
+					"operator": "<",
+					"value": 20
+				}
+			]
+		},
+		{
+			"id": "A041_E4",
+			"description": "不满足伴定义性遗传学异常AML类型诊断标准",
+			"logic": "OR",
+			"conditions": [
+				{
+					"field": "judgment.no_AML_genetic_subtype",
+					"operator": "is_true",
+					"value": null
+				}
+			]
+		},
+		{
+			"id": "A041_E_noTx",
+			"description": "无细胞毒性治疗暴露史",
+			"logic": "OR",
+			"conditions": [
+				{
+					"field": "judgment.no_cytotoxic_therapy_history",
+					"operator": "is_true",
+					"value": null
+				},
+				{
+					"field": "basic.prior_cytotoxic_therapy",
+					"operator": "is_negative",
+					"value": null
+				}
+			]
+		}
+	]
+}

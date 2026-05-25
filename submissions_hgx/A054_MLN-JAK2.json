@@ -1,0 +1,79 @@
+{
+  "disease_code": "A054",
+  "disease_name_en": "Myeloid/lymphoid neoplasm with JAK2 rearrangement",
+  "disease_name_zh": "JAK2重排髓/淋系肿瘤",
+  "abbreviation": "MLN-JAK2",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A054_E1",
+      "description": "髓系或淋系肿瘤，常伴明显嗜酸性粒细胞增多",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.eosinophilia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "judgment.myeloid_lymphoid_neoplasm",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A054_E2",
+      "description": "存在JAK2融合基因",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "fish.JAK2_rearrangement",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "pcr.PCM1_JAK2",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "judgment.JAK2_fusion_detected",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A054_E3",
+      "description": "排除无相关髓系肿瘤的BCR::ABL1样B-ALL",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.not_BCR_ABL1_like_BALL",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A054_D1",
+      "description": "细胞遗传学鉴定易位；分子鉴定融合基因（如PCM1::JAK2）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.PCM1_JAK2",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "judgment.JAK2_fusion_partner_identified",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

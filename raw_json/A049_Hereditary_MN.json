@@ -1,0 +1,64 @@
+{
+  "disease_code": "A049",
+  "disease_name_en": "Myeloid neoplasms associated with germline predisposition",
+  "disease_name_zh": "遗传易感相关髓系肿瘤",
+  "abbreviation": "Hereditary MN",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A049_E1",
+      "description": "检测到与髓系恶性肿瘤风险增加相关的胚系突变",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.germline_mutation_detected",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "judgment.germline_myeloid_risk_mutation",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A049_E2",
+      "description": "髓系肿瘤符合特定疾病类型诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.myeloid_neoplasm_specific_type_criteria_met",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A049_D1",
+      "description": "除胚系突变外的克隆性分子和/或细胞遗传学异常",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.clonal_cytogenetic_molecular",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A049_D2",
+      "description": "正式遗传咨询确定的阳性家族史",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "basic.family_history_blood_disease",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

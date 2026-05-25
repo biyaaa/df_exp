@@ -1,0 +1,38 @@
+{
+  "disease_code": "A055",
+  "disease_name_en": "Myeloid/lymphoid neoplasm with FLT3 rearrangement",
+  "disease_name_zh": "FLT3重排髓/淋系肿瘤",
+  "abbreviation": "MLN-FLT3",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A055_E1",
+      "description": "髓系或淋系肿瘤，伴或不伴嗜酸性粒细胞增多",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.myeloid_lymphoid_neoplasm",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A055_E2",
+      "description": "染色体重排导致FLT3融合基因形成",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "fish.FLT3_rearrangement",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "judgment.FLT3_fusion_detected",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

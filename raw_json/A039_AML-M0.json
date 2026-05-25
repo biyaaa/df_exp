@@ -1,0 +1,137 @@
+{
+  "disease_code": "A039",
+  "disease_name_en": "Acute myeloid leukaemia with minimal differentiation",
+  "disease_name_zh": "急性髓系白血病微分化型",
+  "abbreviation": "AML-M0",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A039_E1",
+      "description": "骨髓和/或外周血中原始细胞≥20%，缺乏髓系分化形态学和细胞化学证据",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "bma.blast_pct",
+              "operator": ">=",
+              "value": 20
+            },
+            {
+              "field": "judgment.no_myeloid_differentiation_morphology",
+              "operator": "is_true",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A039_E2",
+      "description": "至少两种髓系相关免疫表型标记物阳性（CD13/CD33/CD117）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "fcm.CD13",
+              "operator": "is_positive",
+              "value": null
+            },
+            {
+              "field": "fcm.CD33",
+              "operator": "is_positive",
+              "value": null
+            }
+          ]
+        },
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "fcm.CD13",
+              "operator": "is_positive",
+              "value": null
+            },
+            {
+              "field": "fcm.CD117",
+              "operator": "is_positive",
+              "value": null
+            }
+          ]
+        },
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "fcm.CD33",
+              "operator": "is_positive",
+              "value": null
+            },
+            {
+              "field": "fcm.CD117",
+              "operator": "is_positive",
+              "value": null
+            }
+          ]
+        },
+        {
+          "field": "judgment.ge2_myeloid_markers_positive",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A039_E3",
+      "description": "不满足伴定义性遗传学异常AML类型诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_AML_genetic_subtype",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A039_E4",
+      "description": "不满足MPAL诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.not_MPAL",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A039_E_noTx",
+      "description": "无细胞毒性治疗暴露史",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_cytotoxic_therapy_history",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "basic.prior_cytotoxic_therapy",
+          "operator": "is_negative",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

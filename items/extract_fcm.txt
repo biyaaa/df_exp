@@ -1,0 +1,72 @@
+从以下流式细胞术（FCM）免疫表型报告中提取数据，以 JSON 格式输出。
+
+输出字段规范（所有字段带 fcm. 前缀）：
+# 原始信息字段
+- fcm.nucleated_cell_count_nc: 有核细胞数NC（数值）
+- fcm.granulocyte_pct_nc: 粒细胞群Gra/NC（数值，%）
+- fcm.monocyte_pct_nc: 单核细胞群Mon/NC（数值，%）
+- fcm.erythroid_pct_nc: CD45neg群Ery/NC（数值，%）
+- fcm.cd45dim_pct_nc: CD45dim群/NC（数值，%）
+- fcm.mature_lymphocyte_pct_nc: 成熟淋巴细胞Lym/NC（数值，%）
+- fcm.plasma_cell_pct_nc: 浆细胞CD38hi-/NC（数值，%）
+- fcm.eosinophil_pct_nc: 嗜酸粒细胞群Eo/NC（数值，%）
+- fcm.basophil_pct_nc: 嗜碱粒细胞群Baso/NC（数值，%）
+- fcm.granulocyte_status: 粒细胞群结果（粒细胞群结果）
+- fcm.monocyte_status: 单核细胞群结果（单核细胞群结果）
+- fcm.erythroid_status: CD45neg群结果（CD45neg群结果）
+- fcm.cd45dim_status: CD45dim群结果（CD45dim群结果）
+- fcm.mature_lymphocyte_status: 淋巴细胞群结果（淋巴细胞群结果）
+- fcm.plasma_cell_status: 浆细胞群结果（浆细胞群结果）
+- fcm.eosinophil_status: 嗜酸粒细胞群结果（嗜酸粒细胞群结果）
+- fcm.basophil_status: 嗜碱粒细胞群结果（嗜碱粒细胞群结果）
+- fcm.ihc_cd45: CD45表达状态# 通用白细胞与干祖细胞（CD45表达状态# 通用白细胞与干祖细胞）
+- fcm.ihc_cd34: CD34表达状态# 通用白细胞与干祖细胞（CD34表达状态# 通用白细胞与干祖细胞）
+- fcm.ihc_cd38: CD38表达状态# 通用白细胞与干祖细胞（CD38表达状态# 通用白细胞与干祖细胞）
+- fcm.ihc_cd117: CD117表达状态# 通用白细胞与干祖细胞（CD117表达状态# 通用白细胞与干祖细胞）
+- fcm.ihc_hla_dr: HLA-DR表达状态# 通用白细胞与干祖细胞（HLA-DR表达状态# 通用白细胞与干祖细胞）
+- fcm.ihc_cd2: CD2表达状态# T细胞相关（CD2表达状态# T细胞相关）
+- fcm.ihc_cd3: CD3表达状态# T细胞相关（CD3表达状态# T细胞相关）
+- fcm.ihc_cd4: CD4表达状态# T细胞相关（CD4表达状态# T细胞相关）
+- fcm.ihc_cd5: CD5表达状态# T细胞相关（CD5表达状态# T细胞相关）
+- fcm.ihc_cd7: CD7表达状态# T细胞相关（CD7表达状态# T细胞相关）
+- fcm.ihc_cd8: CD8表达状态# T细胞相关（CD8表达状态# T细胞相关）
+- fcm.ihc_trbc1: TRBC1表达状态# T细胞相关（TRBC1表达状态# T细胞相关）
+- fcm.ihc_cd57: CD57表达状态# T细胞相关（CD57表达状态# T细胞相关）
+- fcm.ihc_cd19: CD19表达状态# B细胞相关（CD19表达状态# B细胞相关）
+- fcm.ihc_cd20: CD20表达状态# B细胞相关（CD20表达状态# B细胞相关）
+- fcm.ihc_cd10: CD10表达状态# B细胞相关（CD10表达状态# B细胞相关）
+- fcm.ihc_cd23: CD23表达状态# B细胞相关（CD23表达状态# B细胞相关）
+- fcm.ihc_cd79a: CD79a表达状态# B细胞相关（CD79a表达状态# B细胞相关）
+- fcm.ihc_cd79b: CD79b表达状态# B细胞相关（CD79b表达状态# B细胞相关）
+- fcm.ihc_kappa: Kappa轻链表达状态# B细胞相关（Kappa轻链表达状态# B细胞相关）
+- fcm.ihc_lambda: Lambda轻链表达状态# B细胞相关（Lambda轻链表达状态# B细胞相关）
+- fcm.ihc_cd13: CD13表达状态# 髓系相关（CD13表达状态# 髓系相关）
+- fcm.ihc_cd15: CD15表达状态# 髓系相关（CD15表达状态# 髓系相关）
+- fcm.ihc_cd16: CD16表达状态# 髓系相关（CD16表达状态# 髓系相关）
+- fcm.ihc_cd33: CD33表达状态# 髓系相关（CD33表达状态# 髓系相关）
+- fcm.ihc_cd64: CD64表达状态# 髓系相关（CD64表达状态# 髓系相关）
+- fcm.ihc_cd11b: CD11b表达状态# 髓系相关（CD11b表达状态# 髓系相关）
+- fcm.ihc_cd11c: CD11c表达状态# 髓系相关（CD11c表达状态# 髓系相关）
+- fcm.ihc_cmpo: cMPO表达状态# 髓系相关（cMPO表达状态# 髓系相关）
+- fcm.ihc_cd14: CD14表达状态# 单核细胞相关（CD14表达状态# 单核细胞相关）
+- fcm.ihc_cd56: CD56表达状态# NK细胞相关（CD56表达状态# NK细胞相关）
+- fcm.ihc_cd36: CD36表达状态# 巨核/红系相关（CD36表达状态# 巨核/红系相关）
+- fcm.ihc_cd41: CD41表达状态# 巨核/红系相关（CD41表达状态# 巨核/红系相关）
+- fcm.ihc_cd71: CD71表达状态# 巨核/红系相关（CD71表达状态# 巨核/红系相关）
+- fcm.ihc_cd123: CD123表达状态# 树突/嗜碱细胞相关（CD123表达状态# 树突/嗜碱细胞相关）
+- fcm.result_description: 结果描述（结果描述）
+- fcm.impression: 意见（意见）
+
+#复合计算字段
+- fcm.blast_myeloid_increased: 髓系原始细胞增多（依据: fcm.ihc_cd4, fcm.ihc_cd33；表达式: fcm.ihc_cd33 and fcm.ihc_cd13）
+  说明: 髓系、T/B细胞系或混合表型原始细胞增多
+- fcm.blast_B_increased: B系原始细胞增多（依据: fcm.ihc_cd4；表达式: fcm.ihc_cd4）
+  说明: 髓系、T/B细胞系或混合表型原始细胞增多
+- fcm.blast_T_increased: T系原始细胞增多（依据: fcm.ihc_cd4；表达式: fcm.ihc_cd4）
+  说明: 髓系、T/B细胞系或混合表型原始细胞增多
+- fcm.blast_mixed_increased: 混合表型原始细胞增多（依据: fcm.ihc_cd4；表达式: fcm.ihc_cd4）
+  说明: 髓系、T/B细胞系或混合表型原始细胞增多
+
+#复合分析字段
+
+

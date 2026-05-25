@@ -1,0 +1,65 @@
+从以下外周血形态学（PBA/外周血涂片）报告中提取数据，以 JSON 格式输出。
+注：提取值的时候，要注意列，
+1. 要提取%的列
+2. 要提取参考值
+
+输出字段规范（所有字段带 pba. 前缀）：
+- pba.granulocyte_myeloblast_pct: 粒系_原始粒细胞（数值，%）
+- pba.granulocyte_promyelocyte_pct: 粒系_早幼粒细胞（数值，%）
+- pba.granulocyte_neutrophil_myelocyte_pct: 粒系_中性_中幼（数值，%）
+- pba.granulocyte_neutrophil_metamyelocyte_pct: 粒系_中性_晚幼（数值，%）
+- pba.granulocyte_neutrophil_band_pct: 粒系_中性_杆状核（数值，%）
+- pba.granulocyte_neutrophil_segmented_pct: 粒系_中性_分叶核（数值，%）
+
+- pba.granulocyte_eosinophil_myelocyte_pct: 粒系_嗜酸_中幼（数值，%）
+- pba.granulocyte_eosinophil_metamyelocyte_pct: 粒系_嗜酸_晚幼（数值，%）
+- pba.granulocyte_eosinophil_band_pct: 粒系_嗜酸_杆状核（数值，%）
+- pba.granulocyte_eosinophil_segmented_pct: 粒系_嗜酸_分叶核（数值，%）
+
+- pba.granulocyte_basophil_myelocyte_pct: 粒系_嗜碱_中幼（数值，%）
+- pba.granulocyte_basophil_metamyelocyte_pct: 粒系_嗜碱_晚幼（数值，%）
+- pba.granulocyte_basophil_band_pct: 粒系_嗜碱_杆状核（数值，%）
+- pba.granulocyte_basophil_segmented_pct: 粒系_嗜碱_分叶核（数值，%）
+
+- pba.erythroid_proerythroblast_pct: 红系_原始红细胞（数值，%）
+- pba.erythroid_basophilic_erythroblast_pct: 红系_早幼红细胞（数值，%）
+- pba.erythroid_polychromatic_erythroblast_pct: 红系_中幼红细胞（数值，%）
+- pba.erythroid_orthochromatic_erythroblast_pct: 红系_晚幼红细胞（数值，%）
+
+- pba.erythroid_megaloblast_pct: 红系_巨原红细胞（数值，%）
+- pba.erythroid_basophilic_megaloblast_pct: 红系_巨早幼红细胞（数值，%）
+- pba.erythroid_polychromatic_megaloblast_pct: 红系_巨中幼红细胞（数值，%）
+- pba.erythroid_orthochromatic_megaloblast_pct: 红系_巨晚幼红细胞（数值，%）
+
+- pba.lymphoid_lymphoblast_pct: 淋系_原始淋巴细胞（数值，%）
+- pba.lymphoid_prolymphocyte_pct: 淋系_幼稚淋巴细胞（数值，%）
+- pba.lymphoid_mature_lymphocyte_pct: 淋系_成熟淋巴细胞（数值，%）
+- pba.lymphoid_atypical_lymphocyte_pct: 淋系_异型淋巴细胞（数值，%）
+
+- pba.monocytic_monoblast_pct: 单核系_原始单核细胞（数值，%）
+- pba.monocytic_promonocyte_pct: 单核系_幼稚单核细胞（数值，%）
+- pba.monocytic_monocyte_pct: 单核系_成熟单核细胞（数值，%）
+
+- pba.plasma_plasmablast_pct: 浆系_原始浆细胞（数值，%）
+- pba.plasma_proplasmacyte_pct: 浆系_幼稚浆细胞（数值，%）
+
+- pba.analysis  分析
+- pba.impression 意见
+
+- pba.anemia: 贫血（true/false）
+- pba.thrombocytopenia: 血小板减少（true/false）
+- pba.thrombocytosis: 血小板增多（true/false）
+
+# 复合计算字段列表
+- pba.blasts_pct: 外周血原始细胞占比
+	    "pba.granulocyte_myeloblast_pct" +
+        "pba.erythroid_proerythroblast_pct" +
+        "pba.lymphoid_lymphoblast_pct" +
+        "pba.monocytic_monoblast_pct" +
+        "pba.plasma_plasmablast_pct" +
+        "pba.megakaryocyte_megakaryoblast_pct" 
+
+仅提取报告中明确记录的数据，纯 JSON 输出：
+
+报告文本：
+{text}

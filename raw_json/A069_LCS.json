@@ -1,0 +1,69 @@
+{
+  "disease_code": "A069",
+  "disease_name_en": "Langerhans cell sarcoma",
+  "disease_name_zh": "朗格汉斯细胞肉瘤",
+  "abbreviation": "LCS",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A069_E1",
+      "description": "高度异型的多形性组织细胞，核分裂象增多",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.high_grade_pleomorphic_histiocytes",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A069_E2",
+      "description": "CD1a/S100/CD207免疫反应阳性（任一项均可为局灶性）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "fcm.CD1a",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "biopsy.S100_positive",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "fcm.CD207",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A069_D1",
+      "description": "快速肿瘤进展的临床证据",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.rapid_tumor_progression",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A069_D2",
+      "description": "分子改变（优选MAPK通路）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.MAPK_mutation_detected",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

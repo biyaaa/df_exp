@@ -1,0 +1,69 @@
+{
+  "disease_code": "A052",
+  "disease_name_en": "Myeloid/lymphoid neoplasm with PDGFRB rearrangement",
+  "disease_name_zh": "PDGFRB重排髓/淋系肿瘤",
+  "abbreviation": "MLN-PDGFRB",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A052_E1",
+      "description": "髓系或淋系肿瘤，常伴嗜酸性粒细胞增多，中性粒细胞或单核细胞增多不等",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.eosinophilia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "judgment.myeloid_lymphoid_neoplasm",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A052_E2",
+      "description": "存在PDGFRB融合基因",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "fish.PDGFRB_rearrangement",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "judgment.PDGFRB_fusion_detected",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A052_E3",
+      "description": "排除无相关髓系肿瘤的BCR::ABL1样B-ALL",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.not_BCR_ABL1_like_BALL",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A052_D1",
+      "description": "细胞遗传学/分子鉴定PDGFRB重排伴侣",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.PDGFRB_partner_identified",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

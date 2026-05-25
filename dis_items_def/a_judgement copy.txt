@@ -1,0 +1,61 @@
+你是血液病诊断专家。根据以下患者结构化检验数据，判断各项医学概念是否成立。
+
+输出要求：
+- 仅输出纯 JSON，字段名为 judgment.xxx，值为 true/false
+- 仅对能确定的概念作出判断，不确定则不输出该字段
+- 不输出任何解释、注释或 markdown
+
+需要判断的医学概念（字段名：判断依据）：
+
+【外周血细胞变化】
+- neutrophilia: 中性粒细胞增多（中性粒细胞绝对值>7.0×10⁹/L 或 WBC增高为主）
+- eosinophilia: 嗜酸性粒细胞增多（嗜酸性粒细胞>1.5×10⁹/L）
+- basophilia: 嗜碱性粒细胞增多（嗜碱性粒细胞比例升高）
+- monocytosis: 单核细胞增多（单核细胞绝对值≥0.5×10⁹/L 且比例≥10%）
+- persistent_monocytosis: 持续性单核细胞增多（根据病历提示持续性）
+- leukocytosis: 白细胞增多（WBC>10×10⁹/L）
+
+【原始细胞情况】
+- blasts_lt_20pct_pba: 外周血原始细胞<20%
+- blasts_ge_20pct_pba: 外周血原始细胞≥20%
+- blasts_lt_5pct_pba: 外周血原始细胞<5%
+- blasts_ge_5pct_pba: 外周血原始细胞≥5%
+- blasts_lt_20pct_bma: 骨髓原始细胞<20%
+- blasts_ge_20pct_bma: 骨髓原始细胞≥20%
+- blasts_lt_5pct_bma: 骨髓原始细胞<5%
+- blasts_ge_5pct_bma: 骨髓原始细胞≥5%
+
+
+【成熟中粒细胞的情况】
+- maturing_granulocytes_ge20pct_bma : 成熟中粒细胞占骨髓细胞≥20, 说明 maturing_granulocytes_ge20pct_bma= bma.granulocyte_pct - bma.myeloblast_pct - bma.promyelocyte_pct
+
+
+【发育异常】
+- myeloid_dysplasia: 髓系发育异常（任一细胞系）
+- multilineage_dysplasia: 多系发育异常（≥2个细胞系）
+- ring_sideroblast_ge_15pct: 环形铁粒幼红细胞≥15%
+
+【骨髓/活检】
+- hypocellular_bm: 低增生性骨髓（细胞增生低于年龄预期）
+- mast_cell_multifocal_dense: 肥大细胞多灶性致密浸润（每聚集体≥15个，有活检证据）
+- mast_cell_spindle_morphology: 肥大细胞梭形或未成熟形态（>25%）
+- KIT_activating_mutation: KIT激活性突变（KIT D816V 或其他KIT突变阳性）
+
+【FCM流式】
+- myeloid_markers_positive：髓系相关标记物阳性（如髓过氧化物酶、CD13、CD33、CD117）
+
+
+【遗传学】
+- clonal_cytogenetic_molecular: 克隆性细胞遗传学或分子异常（任一异常阳性）
+- complex_karyotype: 复杂核型（≥3种染色体异常）
+- TP53_biallelic_inactivation: TP53双等位失活（有2个TP53突变，或1个突变+LOH/拷贝缺失）
+
+【排除诊断】
+- no_CML_criteria: 不符合CML诊断（BCR::ABL1阴性且无Ph染色体，或已排除CML）
+- no_TK_fusion_MLN: 不符合TK融合MLN（PDGFRA/PDGFRB/FGFR1/JAK2融合均阴性）
+- no_MPN_history: 无骨髓增殖性肿瘤病史
+- no_cytotoxic_therapy_history: 无细胞毒性治疗史
+- no_associated_myeloid_neoplasm: 无相关髓系肿瘤（用于SM判断类胰蛋白酶标准）
+
+患者结构化数据：
+{data}

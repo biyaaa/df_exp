@@ -1,0 +1,81 @@
+从以下骨髓细胞形态学（骨髓涂片/BMA）报告中提取数据，以 JSON 格式输出。
+注：提取值的时候，要注意列，
+1. 要提取%的列
+2. 不要提取平均值
+3. 不要提取标准差
+
+输出字段规范（所有字段带 bma. 前缀）：
+# 原始信息字段
+- bma.granulocyte_myeloblast_pct: 粒系_原始粒细胞（数值，%）
+- bma.granulocyte_promyelocyte_pct: 粒系_早幼粒细胞（数值，%）
+- bma.granulocyte_neutrophil_myelocyte_pct: 粒系_中性_中幼（数值，%）
+- bma.granulocyte_neutrophil_metamyelocyte_pct: 粒系_中性_晚幼（数值，%）
+- bma.granulocyte_neutrophil_band_pct: 粒系_中性_杆状核（数值，%）
+- bma.granulocyte_neutrophil_segmented_pct: 粒系_中性_分叶核（数值，%）
+- bma.granulocyte_eosinophil_myelocyte_pct: 粒系_嗜酸_中幼（数值，%）
+- bma.granulocyte_eosinophil_metamyelocyte_pct: 粒系_嗜酸_晚幼（数值，%）
+- bma.granulocyte_eosinophil_band_pct: 粒系_嗜酸_杆状核（数值，%）
+- bma.granulocyte_eosinophil_segmented_pct: 粒系_嗜酸_分叶核（数值，%）
+- bma.granulocyte_basophil_myelocyte_pct: 粒系_嗜碱_中幼（数值，%）
+- bma.granulocyte_basophil_metamyelocyte_pct: 粒系_嗜碱_晚幼（数值，%）
+- bma.granulocyte_basophil_band_pct: 粒系_嗜碱_杆状核（数值，%）
+- bma.granulocyte_basophil_segmented_pct: 粒系_嗜碱_分叶核（数值，%）
+- bma.erythroid_proerythroblast_pct: 红系_原始红细胞（数值，%）
+- bma.erythroid_basophilic_erythroblast_pct: 红系_早幼红细胞（数值，%）
+- bma.erythroid_polychromatic_erythroblast_pct: 红系_中幼红细胞（数值，%）
+- bma.erythroid_orthochromatic_erythroblast_pct: 红系_晚幼红细胞（数值，%）
+- bma.erythroid_megaloblast_pct: 红系_巨原红细胞（数值，%）
+- bma.erythroid_basophilic_megaloblast_pct: 红系_巨早幼红细胞（数值，%）
+- bma.erythroid_polychromatic_megaloblast_pct: 红系_巨中幼红细胞（数值，%）
+- bma.erythroid_orthochromatic_megaloblast_pct: 红系_巨晚幼红细胞（数值，%）
+- bma.lymphoid_lymphoblast_pct: 淋系_原始淋巴细胞（数值，%）
+- bma.lymphoid_prolymphocyte_pct: 淋系_幼稚淋巴细胞（数值，%）
+- bma.lymphoid_mature_lymphocyte_pct: 淋系_成熟淋巴细胞（数值，%）
+- bma.lymphoid_atypical_lymphocyte_pct: 淋系_异型淋巴细胞（数值，%）
+- bma.monocytic_monoblast_pct: 单核系_原始单核细胞（数值，%）
+- bma.monocytic_promonocyte_pct: 单核系_幼稚单核细胞（数值，%）
+- bma.monocytic_monocyte_pct: 单核系_成熟单核细胞（数值，%）
+- bma.plasma_plasmablast_pct: 浆系_原始浆细胞（数值，%）
+- bma.plasma_proplasmacyte_pct: 浆系_幼稚浆细胞（数值，%）
+- bma.plasma_plasmacyte_pct: 浆系_成熟浆细胞（数值，%）
+- bma.other_reticular_cell_pct: 其他_网状细胞（数值，%）
+- bma.other_tissue_basophil_pct: 其他_组织嗜碱细胞（数值，%）
+- bma.other_unclassified_cell_pct: 其他_分类不明细胞（数值，%）
+- bma.megakaryoblast_count: 巨核系_原始巨核细胞（数值，个）
+- bma.megakaryocyte_immature_count: 巨核系_幼稚巨核细胞（数值，个）
+- bma.megakaryocyte_granular_count: 巨核系_颗粒型巨核细胞（数值，个）
+- bma.megakaryocyte_platelet_forming_count: 巨核系_产板型巨核细胞（数值，个）
+- bma.megakaryocyte_naked_nucleus_count: 巨核系_裸核型巨核细胞（数值，个）
+- bma.toluidine_blue_result: metachromatic（metachromatic）
+- bma.nap_score: 化学染色_NAP积分值（数值）
+- bma.nap_positive_pct: 化学染色_NAP阳性率（数值，%）
+- bma.pox_result: 化学染色_POX（化学染色_POX）
+- bma.sbb_result: negative（negative）
+- bma.nae_result: 化学染色_NAE（化学染色_NAE）
+- bma.pas_result: 化学染色_PAS（化学染色_PAS）
+- bma.nae_naf_result: 化学染色_NAE+NaF（化学染色_NAE+NaF）
+- bma.ce_result: 化学染色_CE（化学染色_CE）
+- bma.extracellular_iron_result: 化学染色_细胞外铁（化学染色_细胞外铁）
+- bma.intracellular_iron_result: 化学染色_细胞内铁（化学染色_细胞内铁）
+- bma.analysis: 分析（分析）
+- bma.impression: 意见（意见）
+
+#复合计算字段
+- bma.granulocyte_eosinophil_pct: 粒系_嗜酸（依据: bma.granulocyte_eosinophil_myelocyte_pct, bma.granulocyte_eosinophil_metamyelocyte_pct, bma.granulocyte_eosinophil_band_pct, bma.granulocyte_eosinophil_segmented_pct；表达式: bma.granulocyte_eosinophil_myelocyte_pct  +  bma.granulocyte_eosinophil_metamyelocyte_pct  +  bma.granulocyte_eosinophil_band_pct  +  bma.granulocyte_eosinophil_segmented_pct）
+  说明: 粒系嗜酸细胞占比
+- bma.neutrophil_precursor_cells_pct: 中性粒前体细胞占比（依据: bma.granulocyte_promyelocyte_pct, bma.granulocyte_neutrophil_myelocyte_pct, bma.granulocyte_neutrophil_metamyelocyte_pct；表达式: bma.granulocyte_promyelocyte_pct  +  bma.granulocyte_neutrophil_myelocyte_pct  +  bma.granulocyte_neutrophil_metamyelocyte_pct）
+  说明: 中性粒前体细胞占比
+- bma.granulocyte_neutrophil_band_plus_segmented_pct: 中性粒细胞杆状和分叶细胞占比（依据: bma.granulocyte_neutrophil_band_pct, bma.granulocyte_neutrophil_segmented_pct；表达式: bma.granulocyte_neutrophil_band_pct  +  bma.granulocyte_neutrophil_segmented_pct）
+  说明: 中性粒细胞杆状和分叶细胞占比
+- bma.blasts_pct: 骨髓原始细胞占比（依据: bma.granulocyte_myeloblast_pct, bma.erythroid_proerythroblast_pct, bma.erythroid_megaloblast_pct, bma.lymphoid_lymphoblast_pct, bma.monocytic_monoblast_pct, bma.plasma_plasmablast_pct；表达式: bma.granulocyte_myeloblast_pct  +  bma.erythroid_proerythroblast_pct  +  bma.erythroid_megaloblast_pct  +  bma.lymphoid_lymphoblast_pct  +  bma.monocytic_monoblast_pct  +  bma.plasma_plasmablast_pct）
+
+#复合分析字段
+- bma.basophilia: 嗜碱性粒细胞增多(bool)（依据: bma.analysis）
+  分析: {bma.analysis} \n提取嗜碱性粒细胞是否增多，True/False/None， 未提及就是None
+- bma.prominent_eosinophilia: 嗜酸性粒细胞明显增多(bool)（依据: bma.analysis）
+  分析: {bma.analysis}\n提取嗜碱性粒细胞是否明显增多，True/False/None， 未提及就是None
+
+仅输出确定数据，纯 JSON 格式：
+
+报告文本：
+{text}

@@ -1,0 +1,24 @@
+从以下患者基本信息/病历文本中提取关键信息，以 JSON 格式输出。
+
+输出字段规范（所有字段带 basic. 前缀）：
+# 原始信息字段
+- basic.age: 年龄（数值，岁）
+- basic.gender: 性别（"male"/"female"）
+- basic.chief_complaint: 主诉（主诉）
+- basic.present_illness: 现病史（现病史）
+- basic.past_history: 既往史（既往史）
+- basic.personal_history: 个人史（个人史）
+- basic.family_history: 家族史（家族史）
+- basic.allergy_history: 过敏史（字符串，如 `"青霉素过敏"` / `"无"`）
+
+#复合计算字段
+
+#复合分析字段
+- basic.prior_cytotoxic_therapy: 既往细胞毒性治疗史
+- basic.prior_myeloid_neoplasm: 既往髓系肿瘤史
+- basic.family_history_blood_disease: 血液病家族史
+
+仅输出确定的字段，不要猜测，格式为纯 JSON：
+
+报告文本：
+{text}

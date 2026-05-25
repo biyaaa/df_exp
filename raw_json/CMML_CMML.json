@@ -1,0 +1,212 @@
+{
+  "disease_code": "CMML",
+  "disease_name_en": "Chronic myelomonocytic leukaemia",
+  "disease_name_zh": "慢性粒单核细胞白血病",
+  "abbreviation": "CMML",
+  "scoring_logic": "conditional",
+  "required_criteria": [
+    {
+      "id": "CMML_R1",
+      "description": "持续性绝对（≥0.5×10⁹/L）和相对（≥10%）外周血单核细胞增多",
+      "logic": "AND",
+      "conditions": [
+        {
+          "field": "pba.monocyte_abs",
+          "operator": ">=",
+          "value": 0.5
+        },
+        {
+          "field": "pba.monocyte_pct",
+          "operator": ">=",
+          "value": 10
+        }
+      ]
+    },
+    {
+      "id": "CMML_R2",
+      "description": "外周血和骨髓中原始细胞<20%",
+      "logic": "AND",
+      "conditions": [
+        {
+          "field": "pba.blast_pct",
+          "operator": "<",
+          "value": 20
+        },
+        {
+          "field": "bma.blast_pct",
+          "operator": "<",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "id": "CMML_R3",
+      "description": "不满足CML或其他MPN诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_CML_criteria",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "judgment.no_other_MPN_criteria",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "CMML_R4",
+      "description": "不满足MLN-PDGFRA/PDGFRB/FGFR1/JAK2诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_TK_fusion_MLN",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "CMML_D1",
+      "description": "髓系细胞系发育异常",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.myeloid_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.granulocytic_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.megakaryocytic_dysplasia",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "CMML_D2",
+      "description": "克隆性细胞遗传学或分子异常",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.clonal_cytogenetic_molecular",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "caa.clonal_abnormality",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "pcr.clonal_mutation",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "CMML_D3",
+      "description": "外周血单核细胞亚群异常分配",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "fcm.monocyte_subset_abnormal",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "judgment.monocyte_subset_abnormal",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "pass_conditions": [
+    {
+      "description": "单核细胞≥1×10⁹/L时需满足至少1项期望标准",
+      "trigger": {
+        "field": "pba.monocyte_abs",
+        "op": ">=",
+        "value": 1.0
+      },
+      "require_desirable": {
+        "min_count": 1
+      }
+    },
+    {
+      "description": "单核细胞<1×10⁹/L时需同时满足期望标准1和2",
+      "trigger": {
+        "field": "pba.monocyte_abs",
+        "op": "<",
+        "value": 1.0
+      },
+      "require_desirable": {
+        "required_ids": [
+          "CMML_D1",
+          "CMML_D2"
+        ]
+      }
+    }
+  ],
+  "subtypes": [
+    {
+      "name": "骨髓增生异常型CMML (MD-CMML)",
+      "trigger": {
+        "field": "pba.WBC",
+        "op": "<",
+        "value": 13.0
+      }
+    },
+    {
+      "name": "骨髓增殖型CMML (MP-CMML)",
+      "trigger": {
+        "field": "pba.WBC",
+        "op": ">=",
+        "value": 13.0
+      }
+    }
+  ],
+  "grading": [
+    {
+      "name": "CMML-1",
+      "conditions": [
+        {
+          "field": "pba.blast_pct",
+          "op": "<",
+          "value": 5
+        },
+        {
+          "field": "bma.blast_pct",
+          "op": "<",
+          "value": 10
+        }
+      ]
+    },
+    {
+      "name": "CMML-2",
+      "conditions_any": [
+        {
+          "field": "pba.blast_pct",
+          "op": ">=",
+          "value": 5
+        },
+        {
+          "field": "bma.blast_pct",
+          "op": ">=",
+          "value": 10
+        }
+      ]
+    }
+  ]
+}

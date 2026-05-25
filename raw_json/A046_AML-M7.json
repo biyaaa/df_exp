@@ -1,0 +1,81 @@
+{
+  "disease_code": "A046",
+  "disease_name_en": "Acute megakaryoblastic leukaemia",
+  "disease_name_zh": "急性巨核细胞白血病",
+  "abbreviation": "AML-M7",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A046_E1",
+      "description": "骨髓和/或外周血中≥20%具有巨核细胞分化的原始细胞",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "bma.blast_pct",
+          "operator": ">=",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "id": "A046_E2",
+      "description": "原始细胞表达至少一种血小板糖蛋白：CD41/CD61/CD42b",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "fcm.CD41",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fcm.CD61",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fcm.CD42b",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A046_E3",
+      "description": "不满足其他已定义AML类型标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_other_AML_type",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A046_E4",
+      "description": "无骨髓增殖性肿瘤病史",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_MPN_history",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A046_D1",
+      "description": "评估是否存在唐氏综合征",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "basic.down_syndrome",
+          "operator": "not_null",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

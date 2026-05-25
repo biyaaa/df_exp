@@ -1,0 +1,23 @@
+从以下血液疾病分类（dis）提取数据，以 JSON 格式输出。
+
+输出字段规范（所有字段带 dis. 前缀）：
+# 原始信息字段
+- dis.class_ch: CH类疾病（CH类疾病）
+- dis.class_mpn: MPN类疾病（MPN类疾病）
+- dis.class_mastocytosis: Mastocytosis类疾病（Mastocytosis类疾病）
+- dis.class_mds: MDS类疾病（MDS类疾病）
+- dis.class_mds_mpn: MDS/MPN类疾病（MDS/MPN类疾病）
+- dis.class_aml: AML类疾病（AML类疾病）
+- dis.class_mn_pct: MN-PCT类疾病（MN-PCT类疾病）
+- dis.class_hereditary_mn: Hereditary MN类疾病（Hereditary MN类疾病）
+- dis.class_ds_mp: DS-MP类疾病（DS-MP类疾病）
+- dis.class_mln: 髓/淋系肿瘤（髓/淋系肿瘤）
+- dis.class_mpal: 混合表型/谱系不明急性白血病（混合表型/谱系不明急性白血病）
+- dis.class_bpdcn: BPDCN类疾病（BPDCN类疾病）
+- dis.class_histiocytic: Histiocytic类疾病（Histiocytic类疾病）
+
+#复合计算字段
+
+#复合分析字段
+
+

@@ -1,0 +1,62 @@
+{
+  "disease_code": "A062",
+  "disease_name_en": "Mixed-phenotype acute leukaemia, T/myeloid",
+  "disease_name_zh": "T/髓系混合表型急性白血病",
+  "abbreviation": "MPAL-T/My",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A062_E1",
+      "description": "骨髓和/或外周血原始细胞≥20%，同时表达T系和髓系抗原",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "bma.blast_pct",
+              "operator": ">=",
+              "value": 20
+            },
+            {
+              "field": "judgment.T_and_myeloid_antigens_coexpressed",
+              "operator": "is_true",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A062_E2",
+      "description": "不满足伴定义性遗传学改变MPAL诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_MPAL_genetic_defined",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A062_E_noTx",
+      "description": "无细胞毒性治疗暴露史",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_cytotoxic_therapy_history",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "basic.prior_cytotoxic_therapy",
+          "operator": "is_negative",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

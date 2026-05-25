@@ -1,0 +1,62 @@
+{
+  "disease_code": "A034",
+  "disease_name_en": "Acute myeloid leukaemia with NUP98 rearrangement",
+  "disease_name_zh": "NUP98重排AML",
+  "abbreviation": "AML-NUP98",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A034_E_blasts",
+      "description": "外周血和/或骨髓原始细胞增多（可<20%）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pba.blast_pct",
+          "operator": ">",
+          "value": 0
+        },
+        {
+          "field": "bma.blast_pct",
+          "operator": ">",
+          "value": 0
+        },
+        {
+          "field": "judgment.blasts_increased",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A034_E2",
+      "description": "检测到NUP98重排和/或特定融合产物（如NUP98::NSD1）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.NUP98_fusion",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fish.NUP98_rearrangement",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A034_D1",
+      "description": "诊断时鉴定NUP98融合伴侣基因",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.NUP98_partner",
+          "operator": "not_null",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

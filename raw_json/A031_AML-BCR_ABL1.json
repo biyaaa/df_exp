@@ -1,0 +1,86 @@
+{
+  "disease_code": "A031",
+  "disease_name_en": "Acute myeloid leukaemia with BCR::ABL1 fusion",
+  "disease_name_zh": "BCR::ABL1融合AML",
+  "abbreviation": "AML-BCR::ABL1",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A031_E1",
+      "description": "骨髓和/或外周血>20%表达髓系免疫表型的原始细胞",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "bma.blast_pct",
+          "operator": ">=",
+          "value": 20
+        },
+        {
+          "field": "pba.blast_pct",
+          "operator": ">=",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "id": "A031_E2",
+      "description": "初诊时检测到BCR::ABL1",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.BCR_ABL1",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fish.BCR_ABL1",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A031_E3",
+      "description": "诊断前/时/后均无CML特征",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_CML_features_before_after",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A031_D1",
+      "description": "常规核型分析发现t(9;22)(q34;q11.2)",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "caa.t_9_22",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A031_D2",
+      "description": "确定BCR::ABL1转录本亚型及基线水平",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.BCR_ABL1_type",
+          "operator": "not_null",
+          "value": null
+        },
+        {
+          "field": "pcr.BCR_ABL1_IS",
+          "operator": "not_null",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

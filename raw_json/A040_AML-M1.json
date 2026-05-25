@@ -1,0 +1,79 @@
+{
+  "disease_code": "A040",
+  "disease_name_en": "Acute myeloid leukaemia without maturation",
+  "disease_name_zh": "急性髓系白血病未分化型",
+  "abbreviation": "AML-M1",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A040_E1",
+      "description": "骨髓和/或外周血原始细胞≥20%，髓系分化细胞化学证据≥3%，粒细胞成熟形态<10%",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "bma.blast_pct",
+              "operator": ">=",
+              "value": 20
+            },
+            {
+              "field": "judgment.myeloid_differentiation_cytochemistry_ge3pct",
+              "operator": "is_true",
+              "value": null
+            },
+            {
+              "field": "judgment.granulocyte_maturation_lt10pct",
+              "operator": "is_true",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A040_E2",
+      "description": "至少两种髓系相关标记物阳性",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.ge2_myeloid_markers_positive",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A040_E3",
+      "description": "不满足伴定义性遗传学异常AML类型诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_AML_genetic_subtype",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A040_E_noTx",
+      "description": "无细胞毒性治疗暴露史",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_cytotoxic_therapy_history",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "basic.prior_cytotoxic_therapy",
+          "operator": "is_negative",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

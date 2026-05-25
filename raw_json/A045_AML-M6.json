@@ -1,0 +1,47 @@
+{
+  "disease_code": "A045",
+  "disease_name_en": "Acute erythroid leukaemia",
+  "disease_name_zh": "急性红白血病",
+  "abbreviation": "AML-M6",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A045_E1",
+      "description": "红系占骨髓优势，通常≥80%，其中>30%为早幼红细胞",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "bma.erythroid_pct",
+              "operator": ">=",
+              "value": 80
+            },
+            {
+              "field": "bma.proerythroblast_pct",
+              "operator": ">",
+              "value": 30
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A045_D1",
+      "description": "TP53突变证据",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.TP53_mutation",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

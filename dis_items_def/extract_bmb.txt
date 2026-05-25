@@ -1,0 +1,25 @@
+从以下骨髓活检（BMB/骨髓病理）报告中提取数据，以 JSON 格式输出。
+
+输出字段规范（所有字段带 bmb. 前缀）：
+#原始信息字段
+
+- bmb.cellularity_pct: 骨髓有核细胞增生程度（数值，%）
+- bmb.hypocellular: 低增生性骨髓（true/false，细胞增生程度低于年龄预期）
+- bmb.blast_pct: 活检中原始细胞百分比（数值，%）
+- bmb.fibrosis_grade: 纤维化程度（MF-0/MF-1/MF-2/MF-3）
+- bmb.mast_cell_focal_dense_infiltration: 肥大细胞多灶性致密浸润（true/false）
+- bmb.mast_cell_aggregate_size: 每个聚集体中肥大细胞数量（整数，≥15为阳性）
+- bmb.mast_cell_infiltration_pct: 肥大细胞浸润比例（数值，%）
+- bmb.architecture_effacement: 组织结构破坏（true/false，用于髓系肉瘤）
+- bmb.spindle_cell_morphology: 梭形细胞形态（true/false）
+- bmb.CD117_positive: KIT(CD117)阳性（true/false）
+- bmb.tryptase_positive: 类胰蛋白酶阳性（true/false）
+
+#复合计算字段
+
+#复合分析字段
+
+仅输出确定数据，纯 JSON 格式：
+
+报告文本：
+{text}

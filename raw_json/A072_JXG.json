@@ -1,0 +1,98 @@
+{
+  "disease_code": "A072",
+  "disease_name_en": "Juvenile xanthogranuloma",
+  "disease_name_zh": "幼年性黄色肉芽肿",
+  "abbreviation": "JXG",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A072_E1",
+      "description": "境界清楚的组织细胞（常见泡沫细胞）病变，无显著核多形性",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.circumscribed_foamy_histiocytes",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A072_E2",
+      "description": "真皮巨噬细胞免疫表型（CD68/CD163/XIIIa因子）",
+      "logic": "AND",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "OR",
+          "conditions": [
+            {
+              "field": "fcm.CD68",
+              "operator": "is_positive",
+              "value": null
+            },
+            {
+              "field": "fcm.CD163",
+              "operator": "is_positive",
+              "value": null
+            }
+          ]
+        },
+        {
+          "field": "judgment.dermal_macrophage_phenotype",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A072_E3",
+      "description": "CD1a/CD207(朗格素)/ALK阴性",
+      "logic": "AND",
+      "conditions": [
+        {
+          "field": "fcm.CD1a",
+          "operator": "is_negative",
+          "value": null
+        },
+        {
+          "field": "fcm.CD207",
+          "operator": "is_negative",
+          "value": null
+        },
+        {
+          "field": "fcm.ALK",
+          "operator": "is_negative",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A072_D1",
+      "description": "Touton巨细胞",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.Touton_giant_cells",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A072_D2",
+      "description": "临床排除Erdheim-Chester病",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.ECD_clinically_excluded",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

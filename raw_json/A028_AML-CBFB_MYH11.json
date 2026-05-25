@@ -1,0 +1,84 @@
+{
+  "disease_code": "A028",
+  "disease_name_en": "Acute myeloid leukaemia with CBFB::MYH11 fusion",
+  "disease_name_zh": "CBFB::MYH11融合AML",
+  "abbreviation": "AML-CBFB::MYH11",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A028_E_blasts",
+      "description": "外周血和/或骨髓原始细胞增多（可<20%）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pba.blast_pct",
+          "operator": ">",
+          "value": 0
+        },
+        {
+          "field": "bma.blast_pct",
+          "operator": ">",
+          "value": 0
+        },
+        {
+          "field": "judgment.blasts_increased",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A028_E2",
+      "description": "检测到CBFB::MYH11",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.CBFB_MYH11",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fish.CBFB_MYH11",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A028_E_noTx",
+      "description": "无细胞毒性治疗暴露史",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_cytotoxic_therapy_history",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "basic.prior_cytotoxic_therapy",
+          "operator": "is_negative",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A028_D1",
+      "description": "检测到inv(16)(p13.1q22)或t(16;16)(p13.1;q22)",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "caa.inv_16",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fish.CBFB_MYH11",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+从以下流式细胞术（FCM）免疫表型报告中提取数据，以 JSON 格式输出。
+
+输出字段规范（所有字段带 fcm. 前缀）：
+
+- fcm.total_nucleated_cells_nc: 有核细胞数NC（数值，个）
+
+- fcm.granulocyte_pct: 粒细胞群 Gra/NC（数值，%）
+- fcm.lymphocyte_pct: 成熟淋巴 Lym/NC（数值，%）
+- fcm.monocyte_pct: 单核细胞群 Mon/NC（数值，%）
+- fcm.plasma_cell_pct: 浆细胞 CD38bri+/NC（数值，%）
+
+- fcm.eosinophil_pct: 嗜酸粒细胞群 Eo/NC（数值，%）
+- fcm.basophil_pct: 嗜碱粒细胞群 Baso/NC（数值，%）
+
+- fcm.erythroid_cd45_neg_pct: CD45neg群 Ery/NC（数值，%）
+- fcm.cd45_dim_pct: CD45dim群 /NC（数值，%）
+
+- fcm.granulocyte_increased: 粒细胞比例增高(bool)
+- fcm.granulocyte_decreased: 粒细胞比例增高(bool)
+
+- fcm.monocyte_increased: 单核细胞比例增高(bool)
+- fcm.monocyte_decreased: 单核细胞比例减低(bool)
+
+
+#（免疫标志：符号;免疫标志：符号;...）
+- fcm.immunophenotype.profile: 
+- fcm.immunophenotype.description: xxx
+
+- fcm.result  结果描述
+- fcm.impression 意见
+
+报告文本：
+{text}

@@ -1,0 +1,69 @@
+{
+  "disease_code": "A070",
+  "disease_name_en": "Indeterminate dendritic cell tumour",
+  "disease_name_zh": "未定型树突细胞肿瘤",
+  "abbreviation": "IDCT",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A070_E1",
+      "description": "形态学上与朗格汉斯细胞相似的细胞浸润组织",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.Langerhans_like_cell_infiltration",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A070_E2",
+      "description": "病变细胞S100和CD1a阳性，CD207（朗格素）阴性",
+      "logic": "AND",
+      "conditions": [
+        {
+          "field": "biopsy.S100_positive",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "fcm.CD1a",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fcm.CD207",
+          "operator": "is_negative",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A070_E3",
+      "description": "不具有多系统LCH典型表现（溶骨性病变/垂体功能障碍）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_multisystem_LCH_features",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A070_D1",
+      "description": "Ki-67评估",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "biopsy.Ki67_assessed",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

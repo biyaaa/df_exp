@@ -1,0 +1,32 @@
+从以下 FISH（荧光原位杂交）报告中提取数据，以 JSON 格式输出。
+
+输出字段规范（所有字段带 fish. 前缀）：
+结果用 "positive"（阳性/检出）/ "negative"（阴性/未检出）表示。
+
+常见 FISH 检测项目：
+- fish.Ph_chromosome: Ph染色体 t(9;22)（BCR::ABL1）
+- fish.BCR_ABL1: BCR::ABL1融合（FISH）
+- fish.PML_RARA: PML::RARA融合 t(15;17)
+- fish.RUNX1_RUNX1T1: RUNX1::RUNX1T1融合 t(8;21)
+- fish.CBFB_MYH11: CBFB::MYH11融合 inv(16)/t(16;16)
+- fish.KMT2A_rearrangement: KMT2A（MLL）重排
+- fish.MECOM_rearrangement: MECOM(EVI1)重排
+- fish.NUP98_rearrangement: NUP98重排
+- fish.DEK_NUP214: DEK::NUP214融合 t(6;9)
+- fish.RBM15_MRTFA: RBM15::MRTFA融合 t(1;22)
+- fish.del_5q: 5q缺失
+- fish.del_7q: 7q缺失
+- fish.monosomy_7: 7号单体
+- fish.del_17p: 17p缺失（TP53相关）
+- fish.trisomy_21: 21三体
+- fish.PDGFRA_rearrangement: PDGFRA重排（FIP1L1::PDGFRA等）
+- fish.PDGFRB_rearrangement: PDGFRB重排
+- fish.FGFR1_rearrangement: FGFR1重排
+- fish.JAK2_rearrangement: JAK2重排
+- fish.FLT3_rearrangement: FLT3重排
+- fish.KIT_amplification: KIT扩增
+
+仅输出报告中明确检测的项目，纯 JSON 格式：
+
+报告文本：
+{text}

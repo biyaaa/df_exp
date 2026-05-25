@@ -1,0 +1,74 @@
+{
+  "disease_code": "A063",
+  "disease_name_en": "Mixed-phenotype acute leukaemia, rare types",
+  "disease_name_zh": "罕见类型混合表型急性白血病",
+  "abbreviation": "MPAL-Rare",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A063_E1",
+      "description": "骨髓和/或外周血原始细胞≥20%，表达B/T/髓系/巨核细胞系标记物组合",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "bma.blast_pct",
+              "operator": ">=",
+              "value": 20
+            },
+            {
+              "field": "judgment.multi_lineage_markers_rare_combo",
+              "operator": "is_true",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A063_E2",
+      "description": "不满足伴定义性遗传学改变MPAL/B髓系MPAL/T髓系MPAL诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.not_standard_MPAL_subtypes",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A063_E_noTx",
+      "description": "无细胞毒性治疗暴露史",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_cytotoxic_therapy_history",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "basic.prior_cytotoxic_therapy",
+          "operator": "is_negative",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A063_E4",
+      "description": "无髓系肿瘤病史",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_prior_myeloid_neoplasm",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

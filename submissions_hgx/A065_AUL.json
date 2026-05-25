@@ -1,0 +1,57 @@
+{
+  "disease_code": "A065",
+  "disease_name_en": "Acute undifferentiated leukaemia",
+  "disease_name_zh": "急性未分化白血病",
+  "abbreviation": "AUL",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A065_E1",
+      "description": "骨髓和/或外周血原始细胞≥20%，缺乏细胞系特异性免疫表型标记物表达",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "bma.blast_pct",
+              "operator": ">=",
+              "value": 20
+            },
+            {
+              "field": "judgment.no_lineage_specific_markers",
+              "operator": "is_true",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A065_E2",
+      "description": "原始细胞任一细胞系相关标记物不超过一种",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.max_one_lineage_marker_per_lineage",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A065_E3",
+      "description": "不满足伴定义性遗传学改变MPAL或罕见MPAL亚型诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.not_MPAL",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

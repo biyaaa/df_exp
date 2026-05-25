@@ -1,0 +1,37 @@
+从以下骨髓活检（BMB/骨髓病理）报告中提取数据，以 JSON 格式输出。
+
+输出字段规范（所有字段带 bmb. 前缀）：
+# 原始信息字段
+- bmb.specimen_collection_quality: 取材情况（取材情况）
+- bmb.embedding_quality: 包埋情况（包埋情况）
+- bmb.staining_quality: 染色质量（染色质量）
+- bmb.hematopoietic_tissue_volume_pct: 造血组织容量（数值，%）
+- bmb.adipose_tissue_volume_pct: 脂肪组织容量（数值，%）
+- bmb.hematopoietic_activity: 骨髓造血组织活跃程度（骨髓造血组织活跃程度）
+- bmb.adipose_tissue_proliferation: 脂肪组织增生情况（脂肪组织增生情况）
+- bmb.granulocytic_proliferation: 粒细胞增生情况（粒细胞增生情况）
+- bmb.erythroid_proliferation: 红细胞系增生情况（红细胞系增生情况）
+- bmb.megakaryocytic_proliferation: 巨核细胞增生情况（巨核细胞增生情况）
+- bmb.ihc_cd3: CD3表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_cd7: CD7表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_cd20: CD20表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_pax5: PAX5表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_mpo: MPO表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_cd14: CD14表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_cd34: CD34表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_cd117: CD117表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_cd10: CD10表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_tdt: TdT表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_e_cadherin: E-cadherin表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_cd61: CD61表达状态（阳性/阴性/部分阳性）
+- bmb.features_text: 特征原文（特征原文）
+- bmb.diagnostic_opinion_text: 诊断意见原文（诊断意见原文）
+
+#复合计算字段
+
+#复合分析字段
+
+仅输出确定数据，纯 JSON 格式：
+
+报告文本：
+{text}

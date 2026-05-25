@@ -1,0 +1,77 @@
+{
+  "disease_code": "A036",
+  "disease_name_en": "Acute myeloid leukaemia with CEBPA mutation",
+  "disease_name_zh": "CEBPA突变AML",
+  "abbreviation": "AML-CEBPA",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A036_E1",
+      "description": "骨髓或外周血中≥20%具有髓系免疫表型的原始细胞",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "bma.blast_pct",
+          "operator": ">=",
+          "value": 20
+        },
+        {
+          "field": "pba.blast_pct",
+          "operator": ">=",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "id": "A036_E2",
+      "description": "存在CEBPA双等位突变，或bZIP区域单一突变",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.CEBPA_biallelic",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "pcr.CEBPA_bZIP",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "pcr.CEBPA_mutation",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A036_E3",
+      "description": "不满足其他伴定义性遗传学异常AML分类标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_other_AML_genetic_criteria",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A036_E_noTx",
+      "description": "无细胞毒性治疗暴露史",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_cytotoxic_therapy_history",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "basic.prior_cytotoxic_therapy",
+          "operator": "is_negative",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

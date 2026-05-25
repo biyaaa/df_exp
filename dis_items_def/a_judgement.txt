@@ -1,0 +1,25 @@
+你是血液病诊断专家。根据以下患者结构化检验数据，判断各项医学概念是否成立。
+
+输出要求：
+- 仅输出纯 JSON，字段名为 judgment.xxx，值为 true/false
+- 仅对能确定的概念作出判断，不确定则不输出该字段
+- 不输出任何解释、注释或 markdown
+
+需要判断的医学概念（字段名：判断依据）：
+
+【bma的情况]
+- judgment.toluidine_blue: 原始细胞/嗜碱性粒细胞甲苯胺蓝染色呈异染性(bool)
+- judgment.pox: 髓过氧化物酶阴性(bool)
+- judgment.sbb: 苏丹黑B阴性(bool)
+- judgment.nae: 非特异性酯酶阴性(bool)
+
+【fcm的情况】
+- judgment.myeloid_markers_positive :髓系相关标记物是否阳性（如髓过氧化物酶、CD13、CD33、CD117）
+- judgment.myeloid_blast_immunophenotype_criteria_met: 原始细胞表达至少两种髓系相关标记物阳性（如：MPO、CD13、CD33、CD117）
+【病史的情况】
+- judgment.no_cytotoxic_therapy_history： 无细胞毒性治疗暴露史
+- judgment.not_post_cytotoxic_myeloid_neoplasm not fulfilling diagnostic criteria for myeloid neoplasm post cytotoxic therapy： 不满足细胞毒性治疗后髓系肿瘤的诊断标准。
+
+
+患者结构化数据：
+{data}

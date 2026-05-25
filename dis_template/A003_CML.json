@@ -1,0 +1,50 @@
+{
+  "disease_code": "A003",
+  "disease_name_en": "Chronic myeloid leukaemia",
+  "disease_name_zh": "慢性髓性白血病",
+  "abbreviation": "CML",
+  "classes": "MPN",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A003_E1",
+      "description": "外周血中性粒细胞增多",
+      "logic": "OR",
+      "conditions": [
+        {"field": "fcm.granulocyte_increased", "operator": "is_true", "value": true},
+        {"field": "cbc.WBC", "operator": ">", "value": 12.0}
+      ]
+    },
+    {
+      "id": "A003_E2",
+      "description": "Ph染色体和/或BCR::ABL1阳性（细胞遗传学/分子遗传学检测）",
+      "logic": "OR",
+      "conditions": [
+        {"field": "pcr.BCR_ABL1", "operator": "is_positive", "value": true},
+        {"field": "fish.Ph_chromosome", "operator": "is_positive", "value": true},
+        {"field": "fish.BCR_ABL1", "operator": "is_positive", "value": true},
+        {"field": "caa.t_9_22", "operator": "is_positive", "value": "positive"},
+        {"field": "caa.Ph_chromosome", "operator": "is_positive", "value": "positive"}
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A003_D1",
+      "description": "诊断时或疑似进展时骨髓评估（明确疾病分期）",
+      "logic": "OR",
+      "conditions": [
+        {"field": "bma.available", "operator": "is_true", "value": null},
+        {"field": "biopsy.cellularity_pct", "operator": "not_null", "value": null}
+      ]
+    },
+    {
+      "id": "A003_D2",
+      "description": "附加染色体异常（ACAs）评估",
+      "logic": "OR",
+      "conditions": [
+        {"field": "caa.karyotype", "operator": "not_null", "value": null}
+      ]
+    }
+  ]
+}

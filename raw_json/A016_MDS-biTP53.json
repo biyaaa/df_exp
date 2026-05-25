@@ -1,0 +1,143 @@
+{
+  "disease_code": "A016",
+  "disease_name_en": "Myelodysplastic neoplasm with biallelic TP53 inactivation",
+  "disease_name_zh": "双等位TP53失活骨髓增生异常肿瘤",
+  "abbreviation": "MDS-biTP53",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A016_E_cytopenia",
+      "description": "一个或多个细胞系血细胞减少",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pba.anemia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "pba.thrombocytopenia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "judgment.leukocytopenia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "pba.HGB",
+          "operator": "<",
+          "value": 120
+        },
+        {
+          "field": "pba.PLT",
+          "operator": "<",
+          "value": 100
+        }
+      ]
+    },
+    {
+      "id": "A016_E_dysplasia",
+      "description": "一个或多个细胞系发育异常",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.myeloid_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.granulocytic_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.erythroid_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.megakaryocytic_dysplasia",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A016_E3",
+      "description": "外周血和骨髓原始细胞<20%",
+      "logic": "AND",
+      "conditions": [
+        {
+          "field": "pba.blast_pct",
+          "operator": "<",
+          "value": 20
+        },
+        {
+          "field": "bma.blast_pct",
+          "operator": "<",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "id": "A016_E4",
+      "description": "检测到一个或多个TP53突变",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.TP53_mutation",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A016_E5",
+      "description": "单个TP53突变时存在TP53拷贝丢失或拷贝中性LOH证据",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.TP53_biallelic_inactivation",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "pcr.TP53_biallelic",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "caa.TP53_copy_loss",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "caa.copy_neutral_LOH",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A016_D1",
+      "description": "复杂核型（至少三种异常）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.complex_karyotype",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "caa.complex_karyotype",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

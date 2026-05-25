@@ -1,0 +1,101 @@
+{
+  "disease_code": "A071",
+  "disease_name_en": "Interdigitating dendritic cell sarcoma",
+  "disease_name_zh": "交错突细胞肉瘤",
+  "abbreviation": "IDCS",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A071_E1",
+      "description": "梭形至上皮样细胞增殖，胞质丰富，细胞边界不清；核呈泡状，伴或不伴核沟",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.spindle_epithelioid_vesicular_nuclei",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A071_E2",
+      "description": "S100阳性（树突状细胞突起突出）及一种或多种血淋巴系标记物阳性（CD45/CD4/CD43）",
+      "logic": "AND",
+      "conditions": [
+        {
+          "field": "biopsy.S100_positive",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "id": "",
+          "description": "",
+          "logic": "OR",
+          "conditions": [
+            {
+              "field": "fcm.CD45",
+              "operator": "is_positive",
+              "value": null
+            },
+            {
+              "field": "fcm.CD4",
+              "operator": "is_positive",
+              "value": null
+            },
+            {
+              "field": "fcm.CD43",
+              "operator": "is_positive",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A071_E3",
+      "description": "朗格汉斯细胞和滤泡树突细胞标记物阴性",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "fcm.CD1a",
+              "operator": "is_negative",
+              "value": null
+            },
+            {
+              "field": "fcm.CD207",
+              "operator": "is_negative",
+              "value": null
+            },
+            {
+              "field": "fcm.CD21",
+              "operator": "is_negative",
+              "value": null
+            },
+            {
+              "field": "fcm.CD35",
+              "operator": "is_negative",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A071_E4",
+      "description": "无黑色素细胞标记物表达",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_melanocytic_markers",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

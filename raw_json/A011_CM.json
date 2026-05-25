@@ -1,0 +1,115 @@
+{
+  "disease_code": "A011",
+  "disease_name_en": "Cutaneous mastocytosis",
+  "disease_name_zh": "皮肤肥大细胞增多症",
+  "abbreviation": "CM",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A011_E1",
+      "description": "皮肤病变具有典型肥大细胞增多症临床特征",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "basic.skin_lesions_mastocytosis",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A011_E2",
+      "description": "无系统性肥大细胞增多症临床征象",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_systemic_mastocytosis_signs",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A011_E3",
+      "description": "骨髓评估（如适用）不符合系统性肥大细胞增多症标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.bm_not_meeting_SM_criteria",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A011_E4",
+      "description": "皮肤活检显示肥大细胞数量增多",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "biopsy.mast_cell_increased",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A011_E5",
+      "description": "肥大细胞KIT(CD117)和/或类胰蛋白酶免疫反应阳性",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "biopsy.CD117_positive",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "biopsy.tryptase_positive",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A011_D1",
+      "description": "皮肤真皮层肥大细胞免疫表型异常（CD2+/CD25+/CD30+）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "fcm.mast_cell_CD2",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fcm.mast_cell_CD25",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fcm.mast_cell_CD30",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A011_D2",
+      "description": "皮损皮肤中检测到KIT突变",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.KIT_D816V",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "pcr.KIT_mutation",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

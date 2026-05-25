@@ -1,0 +1,150 @@
+{
+  "disease_code": "A017",
+  "disease_name_en": "Myelodysplastic neoplasm with low blasts",
+  "disease_name_zh": "低原始细胞骨髓增生异常肿瘤",
+  "abbreviation": "MDS-LB",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A017_E_cytopenia",
+      "description": "一个或多个细胞系血细胞减少",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pba.anemia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "pba.thrombocytopenia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "judgment.leukocytopenia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "pba.HGB",
+          "operator": "<",
+          "value": 120
+        },
+        {
+          "field": "pba.PLT",
+          "operator": "<",
+          "value": 100
+        }
+      ]
+    },
+    {
+      "id": "A017_E_dysplasia",
+      "description": "一个或多个细胞系发育异常",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.myeloid_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.granulocytic_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.erythroid_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.megakaryocytic_dysplasia",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A017_E_blastsLow",
+      "description": "骨髓原始细胞<5%，外周血原始细胞<2%",
+      "logic": "AND",
+      "conditions": [
+        {
+          "field": "bma.blast_pct",
+          "operator": "<",
+          "value": 5
+        },
+        {
+          "field": "pba.blast_pct",
+          "operator": "<",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "A017_E4",
+      "description": "排除相关营养缺乏（叶酸/维生素B12）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.nutritional_deficiency_excluded",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A017_E5",
+      "description": "不满足伴定义性遗传学改变MDS或低增生性MDS诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_defining_genetic_MDS_no_hypoplastic",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A017_D1",
+      "description": "骨髓增生程度高于年龄预期",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "biopsy.hypercellular",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.hypercellular",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A017_D_clonal",
+      "description": "检测到克隆性细胞遗传学和/或分子异常",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.clonal_cytogenetic_molecular",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "caa.clonal_abnormality",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "pcr.clonal_mutation",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

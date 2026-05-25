@@ -1,0 +1,53 @@
+{
+  "disease_code": "A047",
+  "disease_name_en": "Myeloid sarcoma",
+  "disease_name_zh": "髓系肉瘤",
+  "abbreviation": "MS",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A047_E1",
+      "description": "由髓系原始细胞组成的肿块破坏组织结构（伴或不伴成熟成分）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "biopsy.architecture_effacement",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "judgment.myeloid_mass_tissue_effacement",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A047_E2",
+      "description": "粒系和/或单核系标记物免疫表型阳性",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "fcm.MPO",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fcm.CD33",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fcm.CD13",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "judgment.granulocytic_monocytic_markers_positive",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

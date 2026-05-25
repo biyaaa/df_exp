@@ -1,0 +1,66 @@
+{
+  "disease_code": "A012",
+  "disease_name_en": "Systemic mastocytosis",
+  "disease_name_zh": "系统性肥大细胞增多症",
+  "abbreviation": "SM",
+  "classes": "MPN",
+  "scoring_logic": "major_minor",
+  "pass_formula": "(major >= 1 and minor >= 1) or minor >= 3",
+  "note": "满足主要标准和至少1项次要标准，或满足至少3项次要标准，可诊断SM",
+  "major_criteria": [
+    {
+      "id": "SM_M1",
+      "description": "骨髓和/或皮肤外器官切片中检测到肥大细胞多灶性致密浸润（聚集体中≥15个肥大细胞）",
+      "logic": "OR",
+      "conditions": [
+        {"field": "biopsy.mast_cell_focal_dense_infiltration", "operator": "is_true", "value": null},
+        {"field": "judgment.mast_cell_multifocal_dense", "operator": "is_true", "value": null},
+        {"field": "biopsy.mast_cell_aggregate_size", "operator": ">=", "value": 15}
+      ]
+    }
+  ],
+  "minor_criteria": [
+    {
+      "id": "SM_m1",
+      "description": "骨髓涂片或皮肤外器官中>25%肥大细胞形态异常（梭形或未成熟）",
+      "logic": "OR",
+      "conditions": [
+        {"field": "bma.atypical_mast_cell_pct", "operator": ">", "value": 25},
+        {"field": "judgment.mast_cell_spindle_morphology", "operator": "is_true", "value": null},
+        {"field": "biopsy.spindle_cell_morphology", "operator": "is_true", "value": null}
+      ]
+    },
+    {
+      "id": "SM_m2",
+      "description": "肥大细胞异常表达CD2、CD25和/或CD30",
+      "logic": "OR",
+      "conditions": [
+        {"field": "fcm.mast_cell_CD2", "operator": "is_positive", "value": null},
+        {"field": "fcm.mast_cell_CD25", "operator": "is_positive", "value": null},
+        {"field": "fcm.mast_cell_CD30", "operator": "is_positive", "value": null},
+        {"field": "fcm.CD2", "operator": "is_positive", "value": null},
+        {"field": "fcm.CD25", "operator": "is_positive", "value": null},
+        {"field": "fcm.CD30", "operator": "is_positive", "value": null}
+      ]
+    },
+    {
+      "id": "SM_m3",
+      "description": "外周血、骨髓或皮肤外器官中检测到KIT p.D816V突变或其他激活性KIT突变",
+      "logic": "OR",
+      "conditions": [
+        {"field": "pcr.KIT_D816V", "operator": "is_positive", "value": null},
+        {"field": "pcr.KIT_mutation", "operator": "is_positive", "value": null},
+        {"field": "judgment.KIT_activating_mutation", "operator": "is_true", "value": null}
+      ]
+    },
+    {
+      "id": "SM_m4",
+      "description": "无相关髓系肿瘤情况下基线血清类胰蛋白酶>20 ng/mL（或HaT调整后仍>20）",
+      "logic": "AND",
+      "conditions": [
+        {"field": "judgment.no_associated_myeloid_neoplasm", "operator": "is_true", "value": null},
+        {"field": "lab.serum_tryptase", "operator": ">", "value": 20}
+      ]
+    }
+  ]
+}

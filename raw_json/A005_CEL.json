@@ -1,0 +1,87 @@
+{
+  "disease_code": "A005",
+  "disease_name_en": "Chronic eosinophilic leukaemia",
+  "disease_name_zh": "慢性嗜酸性粒细胞白血病",
+  "abbreviation": "CEL",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A005_E1",
+      "description": "嗜酸性粒细胞增多（HE）：外周血嗜酸性粒细胞>1.5×10⁹/L，≥4周间隔两次确认",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pba.eosinophil_abs",
+          "operator": ">",
+          "value": 1.5
+        },
+        {
+          "field": "judgment.eosinophilia",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A005_E2",
+      "description": "克隆性证据",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.clonal_cytogenetic_molecular",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "caa.clonal_abnormality",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "pcr.clonal_mutation",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "judgment.clonality_evidence",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A005_E3",
+      "description": "骨髓形态异常",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.myeloid_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.granulocytic_dysplasia",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "bma.available",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A005_E4",
+      "description": "不符合其他髓系或淋系肿瘤诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_other_myeloid_lymphoid_neoplasm",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

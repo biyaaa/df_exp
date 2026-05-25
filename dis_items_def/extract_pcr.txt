@@ -1,0 +1,52 @@
+从以下 PCR/分子遗传学报告中提取数据，以 JSON 格式输出。
+
+输出字段规范（所有字段带 pcr. 前缀）：
+融合基因/突变结果用 "positive"/"negative" 或具体数值表示。
+
+融合基因（RT-PCR/NGS）：
+- pcr.BCR_ABL1: BCR::ABL1融合（阳性/阴性）
+- pcr.BCR_ABL1_type: 转录本类型（p210/p190/p230）
+- pcr.BCR_ABL1_IS: BCR::ABL1 IS% 定量值（数值，%）
+- pcr.PML_RARA: PML::RARA融合
+- pcr.RUNX1_RUNX1T1: RUNX1::RUNX1T1融合
+- pcr.CBFB_MYH11: CBFB::MYH11融合
+- pcr.DEK_NUP214: DEK::NUP214融合
+- pcr.RBM15_MRTFA: RBM15::MRTFA融合
+- pcr.KMT2A_fusion: KMT2A重排/融合（阳性/阴性，可注明伴侣基因）
+- pcr.MECOM_rearrangement: MECOM重排
+- pcr.NUP98_rearrangement: NUP98重排
+- pcr.FGFR1_rearrangement: FGFR1重排
+- pcr.ETV6_ABL1: ETV6::ABL1融合
+- pcr.PCM1_JAK2: PCM1::JAK2融合
+- pcr.FIP1L1_PDGFRA: FIP1L1::PDGFRA融合
+
+基因突变（NGS/Sanger）：
+- pcr.NPM1_mutation: NPM1突变（positive/negative）
+- pcr.CEBPA_mutation: CEBPA突变（positive/negative）
+- pcr.CEBPA_biallelic: CEBPA双等位突变（true/false）
+- pcr.CEBPA_bZIP: CEBPA bZIP区突变（true/false）
+- pcr.SF3B1_mutation: SF3B1突变（positive/negative）
+- pcr.TP53_mutation: TP53突变（positive/negative）
+- pcr.TP53_mutation_count: TP53突变数量（整数）
+- pcr.TP53_biallelic: TP53双等位失活（true/false）
+- pcr.FLT3_ITD: FLT3-ITD突变
+- pcr.FLT3_TKD: FLT3-TKD突变
+- pcr.IDH1_mutation: IDH1突变
+- pcr.IDH2_mutation: IDH2突变
+- pcr.DNMT3A_mutation: DNMT3A突变
+- pcr.TET2_mutation: TET2突变
+- pcr.ASXL1_mutation: ASXL1突变
+- pcr.SRSF2_mutation: SRSF2突变
+- pcr.RUNX1_mutation: RUNX1突变（点突变）
+- pcr.KIT_D816V: KIT p.D816V突变（positive/negative）
+- pcr.KIT_mutation: 其他KIT突变（positive/negative）
+- pcr.GATA1_exon2_3: GATA1外显子2/3突变
+- pcr.JAK2_V617F: JAK2 V617F突变
+- pcr.CALR_mutation: CALR突变
+- pcr.MPL_mutation: MPL突变
+- pcr.clonal_mutation: 存在克隆性基因突变（true/false，有任何克隆突变即为true）
+
+仅输出报告中明确检测的项目，纯 JSON 格式：
+
+报告文本：
+{text}

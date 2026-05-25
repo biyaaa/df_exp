@@ -1,0 +1,79 @@
+{
+  "disease_code": "A050",
+  "disease_name_en": "Myeloid proliferations associated with Down syndrome",
+  "disease_name_zh": "唐氏综合征相关髓系增殖",
+  "abbreviation": "DS-MP",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A050_E1",
+      "description": "确认存在宪法性21三体（唐氏综合征）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "basic.down_syndrome",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "caa.trisomy_21",
+          "operator": "is_positive",
+          "value": null
+        },
+        {
+          "field": "fish.trisomy_21",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "A050_E2",
+      "description": "外周血白细胞增多伴原始细胞增加（TAM）或持续性原始细胞增多髓系肿瘤（ML-DS）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.leukocytosis",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "judgment.blasts_increased",
+          "operator": "is_true",
+          "value": null
+        },
+        {
+          "field": "pba.blast_pct",
+          "operator": ">",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "A050_E3",
+      "description": "检测到GATA1外显子2/3突变",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "pcr.GATA1_exon2_3",
+          "operator": "is_positive",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "desirable_criteria": [
+    {
+      "id": "A050_D1",
+      "description": "其他基因突变分析（粘连蛋白/EZH2/KANSL1/JAK3）",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.cohesin_EZH2_KANSL1_JAK3_profiled",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

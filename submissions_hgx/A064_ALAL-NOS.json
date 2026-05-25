@@ -1,0 +1,45 @@
+{
+  "disease_code": "A064",
+  "disease_name_en": "Acute leukaemia of ambiguous lineage NOS",
+  "disease_name_zh": "谱系不明急性白血病，未特指",
+  "abbreviation": "ALAL-NOS",
+  "scoring_logic": "all_essential",
+  "essential_criteria": [
+    {
+      "id": "A064_E1",
+      "description": "骨髓和/或外周血原始细胞≥20%，表达不允许确定细胞系归属的免疫表型标记物组合",
+      "logic": "OR",
+      "conditions": [
+        {
+          "id": "",
+          "description": "",
+          "logic": "AND",
+          "conditions": [
+            {
+              "field": "bma.blast_pct",
+              "operator": ">=",
+              "value": 20
+            },
+            {
+              "field": "judgment.ambiguous_lineage_immunophenotype",
+              "operator": "is_true",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A064_E2",
+      "description": "不满足伴定义性遗传学改变MPAL诊断标准",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "judgment.no_MPAL_genetic_defined",
+          "operator": "is_true",
+          "value": null
+        }
+      ]
+    }
+  ]
+}
