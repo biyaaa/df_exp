@@ -17,9 +17,12 @@
 - bmb.ihc_cd20: CD20表达状态（阳性/阴性/部分阳性）
 - bmb.ihc_pax5: PAX5表达状态（阳性/阴性/部分阳性）
 - bmb.ihc_mpo: MPO表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_cd13: CD13表达状态# 髓系相关（CD13表达状态# 髓系相关）
 - bmb.ihc_cd14: CD14表达状态（阳性/阴性/部分阳性）
 - bmb.ihc_cd34: CD34表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_cd33: CD33表达状态# 髓系相关（CD33表达状态# 髓系相关）
 - bmb.ihc_cd117: CD117表达状态（阳性/阴性/部分阳性）
+- bmb.ihc_hla_dr: HLA-DR表达状态# 通用白细胞与干祖细胞（HLA-DR表达状态# 通用白细胞与干祖细胞）
 - bmb.ihc_cd10: CD10表达状态（阳性/阴性/部分阳性）
 - bmb.ihc_tdt: TdT表达状态（阳性/阴性/部分阳性）
 - bmb.ihc_e_cadherin: E-cadherin表达状态（阳性/阴性/部分阳性）
