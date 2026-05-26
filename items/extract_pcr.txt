@@ -32,7 +32,7 @@
 - pcr.FLT3_rearrangement: FLT3重排（FLT3重排）
 - pcr.IDH1_mutation: IDH1突变（IDH1突变）
 - pcr.IDH2_mutation: IDH2突变（IDH2突变）
-- pcr.CSF3R_mutation:CSF3R突变(CSF3R突变)
+- pcr.CSF3R_mutation: CSF3R突变(CSF3R突变)（CSF3R突变(CSF3R突变)）
 - pcr.DNMT3A_mutation: DNMT3A突变（DNMT3A突变）
 - pcr.TET2_mutation: TET2突变（TET2突变）
 - pcr.ASXL1_mutation: ASXL1突变（ASXL1突变）

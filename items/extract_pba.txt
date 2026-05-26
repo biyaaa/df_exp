@@ -68,6 +68,7 @@
 - pba.granulocyte_neutrophil_band_plus_segmented_pct: 中性粒细胞杆状和分叶细胞占比（依据: pba.granulocyte_neutrophil_band_pct, pba.granulocyte_neutrophil_segmented_pct；表达式: pba.granulocyte_neutrophil_band_pct  +  pba.granulocyte_neutrophil_segmented_pct）
   说明: 中性粒细胞杆状和分叶细胞占比
 - pba.blasts_pct: 骨髓原始细胞占比（依据: pba.granulocyte_myeloblast_pct, pba.erythroid_proerythroblast_pct, pba.erythroid_megaloblast_pct, pba.lymphoid_lymphoblast_pct, pba.monocytic_monoblast_pct, pba.plasma_plasmablast_pct；表达式: pba.granulocyte_myeloblast_pct  +  pba.erythroid_proerythroblast_pct  +  pba.erythroid_megaloblast_pct  +  pba.lymphoid_lymphoblast_pct  +  pba.monocytic_monoblast_pct  +  pba.plasma_plasmablast_pct）
+- pba.granulocyte_neutrophi_pct: 中性粒细胞（依据: pba.granulocyte_neutrophil_myelocyte_pct, pba.granulocyte_neutrophil_metamyelocyte_pct, pba.granulocyte_neutrophil_band_pct, pba.granulocyte_neutrophil_segmented_pct；表达式: pba.granulocyte_neutrophil_myelocyte_pct  +  pba.granulocyte_neutrophil_metamyelocyte_pct  +  pba.granulocyte_neutrophil_band_pct  +  pba.granulocyte_neutrophil_segmented_pct）
 
 #复合分析字段
 - pba.basophilia: 嗜碱性粒细胞增多(bool)（依据: pba.analysis）

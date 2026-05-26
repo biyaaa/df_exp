@@ -54,6 +54,8 @@
 - fcm.ihc_cd41: CD41表达状态# 巨核/红系相关（CD41表达状态# 巨核/红系相关）
 - fcm.ihc_cd71: CD71表达状态# 巨核/红系相关（CD71表达状态# 巨核/红系相关）
 - fcm.ihc_cd123: CD123表达状态# 树突/嗜碱细胞相关（CD123表达状态# 树突/嗜碱细胞相关）
+- fcm.ihc_cd61: CD61表达状态（阳性/阴性/部分阳性）
+- fcm.ihc_cd42b: CD42b（CD42b）
 - fcm.result_description: 结果描述（结果描述）
 - fcm.impression: 意见（意见）
 
