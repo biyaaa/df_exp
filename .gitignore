@@ -2,4 +2,5 @@
 *.jpg
 ~*
 tools/
-
+submissions_hgx/
+.gitignore
