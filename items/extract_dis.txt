@@ -6,17 +6,33 @@
 - dis.class_mpn: MPN类疾病（MPN类疾病）
 - dis.class_mastocytosis: Mastocytosis类疾病（Mastocytosis类疾病）
 - dis.class_mds: MDS类疾病（MDS类疾病）
-- dis.class_mds_mpn: MDS/MPN类疾病（MDS/MPN类疾病）
+- dis.class_mds_mpn: MDS/MPN类疾病（骨髓增生异常/骨髓增殖性肿瘤）
 - dis.class_aml: AML类疾病（AML类疾病）
 - dis.class_mn_pct: MN-PCT类疾病（MN-PCT类疾病）
 - dis.class_hereditary_mn: Hereditary MN类疾病（Hereditary MN类疾病）
 - dis.class_ds_mp: DS-MP类疾病（DS-MP类疾病）
-- dis.class_mln: 髓/淋系肿瘤（髓/淋系肿瘤）
-- dis.class_mpal: 混合表型/谱系不明急性白血病（混合表型/谱系不明急性白血病）
+- dis.class_mln: MLN类疾病（髓/淋系肿瘤）
+- dis.class_mpal: MPAL/ALAL类疾病（混合表型/谱系不明急性白血病）
 - dis.class_bpdcn: BPDCN类疾病（BPDCN类疾病）
 - dis.class_histiocytic: Histiocytic类疾病（Histiocytic类疾病）
+- dis.class_b_all_lbl: B-ALL/LBL类疾病（B淋巴母细胞白血病/淋巴瘤）
+- dis.class_mature_b_cell: Mature B-cell类疾病（Mature B-cell类疾病）
+- dis.class_lbcl: LBCL类疾病（LBCL类疾病）
+- dis.class_hgbl: HGBL类疾病（HGBL类疾病）
+- dis.class_bl: BL类疾病（BL类疾病）
+- dis.class_hl: HL类疾病（HL类疾病）
+- dis.class_plasma_cell: Plasma cell类疾病（Plasma cell类疾病）
+- dis.class_immune_deficiency_lpd: Immune deficiency LPD类疾病（免疫缺陷/免疫失调相关淋巴增殖性肿瘤）
+- dis.class_t_all_lbl: T-ALL/LBL类疾病（T淋巴母细胞白血病/淋巴瘤）
+- dis.class_mature_t_nk_cell: Mature T/NK-cell类疾病（成熟T/NK细胞肿瘤）
+- dis.class_cutaneous_t_nk_cell: Cutaneous T/NK-cell类疾病（原发皮肤T/NK细胞淋巴瘤）
+- dis.class_intestinal_t_nk_cell: Intestinal T/NK-cell类疾病（肠道T/NK细胞淋巴瘤）
+- dis.class_ebv_t_nk_cell: EBV T/NK-cell类疾病（EBV相关T/NK细胞淋巴增殖性肿瘤）
 
 #复合计算字段
+- dis.myeloid_neoplasms: 髓系肿瘤（依据: dis.class_mpn, dis.class_mastocytosis, dis.class_mds, dis.class_mds_mpn, dis.class_aml, dis.class_mn_pct, dis.class_hereditary_mn, dis.class_ds_mp, dis.class_mpal, dis.class_bpdcn, dis.class_histiocytic；表达式: dis.class_mpn  or  dis.class_mds  or  dis.class_mds_mpn  or  dis.class_aml  or  dis.class_mn_pct  or  dis.class_hereditary_mn  or  dis.class_ds_mp  or  dis.class_mpal  or  dis.class_bpdcn  or  dis.class_histiocytic）
+  说明: dis
+- dis.lymphoid_neoplasms: 淋系肿瘤（依据: dis.class_b_all_lbl, dis.class_mature_b_cell, dis.class_lbcl, dis.class_hgbl, dis.class_bl, dis.class_hl, dis.class_plasma_cell, dis.class_immune_deficiency_lpd, dis.class_t_all_lbl, dis.class_mature_t_nk_cell, dis.class_cutaneous_t_nk_cell, dis.class_intestinal_t_nk_cell, dis.class_ebv_t_nk_cell；表达式: dis.class_b_all_lbl  or  dis.class_mature_b_cell  or  dis.class_lbcl  or  dis.class_hgbl  or  dis.class_bl  or  dis.class_hl  or  dis.class_plasma_cell  or  dis.class_immune_deficiency_lpd  or  dis.class_t_all_lbl  or  dis.class_mature_t_nk_cell  or  dis.class_cutaneous_t_nk_cell  or  dis.class_intestinal_t_nk_cell  or  dis.class_ebv_t_nk_cell）
 
 #复合分析字段
 

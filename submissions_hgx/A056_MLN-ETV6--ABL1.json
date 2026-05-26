@@ -11,9 +11,14 @@
       "logic": "OR",
       "conditions": [
         {
-          "field": "judgment.myeloid_lymphoid_neoplasm",
+          "field": "dis.myeloid_neoplasms",
           "operator": "is_true",
-          "value": null
+          "value": true
+        },
+        {
+          "field": "dis.lymphoid_neoplasms",
+          "operator": ">=",
+          "value": 0
         }
       ]
     },
@@ -28,9 +33,21 @@
           "value": null
         },
         {
-          "field": "judgment.ETV6_ABL1_detected",
-          "operator": "is_true",
+          "field": "fish.ETV6_ABL1",
+          "operator": "is_positive",
           "value": null
+        }
+      ]
+    },
+    {
+      "id": "A056_E3",
+      "description": "通常处于慢性期的造血系统",
+      "logic": "OR",
+      "conditions": [
+        {
+          "field": "dis.class_ch",
+          "operator": "is_true",
+          "value": true
         }
       ]
     }

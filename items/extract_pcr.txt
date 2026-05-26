@@ -9,12 +9,14 @@
 - pcr.RUNX1_RUNX1T1: RUNX1::RUNX1T1融合（RUNX1::RUNX1T1融合）
 - pcr.CBFB_MYH11: CBFB::MYH11融合（CBFB::MYH11融合）
 - pcr.DEK_NUP214: DEK::NUP214融合（DEK::NUP214融合）
+- pcr.ETV6_ABL1: ETV6::ABL1融合（ETV6::ABL1融合）
 - pcr.RBM15_MRTFA: RBM15::MRTFA融合（RBM15::MRTFA融合）
 - pcr.KMT2A_fusion: KMT2A重排/融合（阳性/阴性，可注明伴侣基因）
 - pcr.MECOM_rearrangement: MECOM重排（MECOM重排）
 - pcr.NUP98_rearrangement: NUP98重排（NUP98重排）
+- pcr.PDGFRA_rearrangement: PDGFRA重排（PDGFRA重排）
+- pcr.PDGFRB_rearrangement: PDGFRB重排（PDGFRB重排）
 - pcr.FGFR1_rearrangement: FGFR1重排（FGFR1重排）
-- pcr.ETV6_ABL1: ETV6::ABL1融合（ETV6::ABL1融合）
 - pcr.PCM1_JAK2: PCM1::JAK2融合（PCM1::JAK2融合）
 - pcr.FIP1L1_PDGFRA: FIP1L1::PDGFRA融合（FIP1L1::PDGFRA融合）
 - pcr.NPM1_mutation: NPM1突变（true/false）
@@ -27,8 +29,10 @@
 - pcr.TP53_biallelic: TP53双等位失活（true/false）
 - pcr.FLT3_ITD: FLT3-ITD突变（FLT3-ITD突变）
 - pcr.FLT3_TKD: FLT3-TKD突变（FLT3-TKD突变）
+- pcr.FLT3_rearrangement: FLT3重排（FLT3重排）
 - pcr.IDH1_mutation: IDH1突变（IDH1突变）
 - pcr.IDH2_mutation: IDH2突变（IDH2突变）
+- pcr.CSF3R_mutation:CSF3R突变(CSF3R突变)
 - pcr.DNMT3A_mutation: DNMT3A突变（DNMT3A突变）
 - pcr.TET2_mutation: TET2突变（TET2突变）
 - pcr.ASXL1_mutation: ASXL1突变（ASXL1突变）
@@ -50,3 +54,4 @@
 
 报告文本：
 {text}
+- pcr.PCM1_JAK2: PCM1::JAK2融合（PCM1::JAK2融合）

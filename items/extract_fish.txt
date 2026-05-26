@@ -4,6 +4,8 @@
 # 原始信息字段
 - fish.Ph_chromosome: Ph染色体 t(9;22)（Ph染色体 t(9;22)）
 - fish.BCR_ABL1: BCR::ABL1融合（BCR::ABL1融合）
+- fish.ETV6_ABL1: ETV6::ABL1融合（ETV6::ABL1融合）
+- fish.PCM1_JAK2: PCM1::JAK2融合（PCM1::JAK2融合）
 - fish.PML_RARA: PML::RARA融合 t(15;17)（PML::RARA融合 t(15;17)）
 - fish.RUNX1_RUNX1T1: RUNX1::RUNX1T1融合 t(8;21)（RUNX1::RUNX1T1融合 t(8;21)）
 - fish.CBFB_MYH11: CBFB::MYH11融合 inv(16)/t(16;16)（CBFB::MYH11融合 inv(16)/t(16;16)）
@@ -23,6 +25,7 @@
 - fish.JAK2_rearrangement: JAK2重排（JAK2重排）
 - fish.FLT3_rearrangement: FLT3重排（FLT3重排）
 - fish.KIT_amplification: KIT扩增（KIT扩增）
+
 
 #复合计算字段
 

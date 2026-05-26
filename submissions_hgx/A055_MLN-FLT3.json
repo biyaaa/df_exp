@@ -11,9 +11,14 @@
       "logic": "OR",
       "conditions": [
         {
-          "field": "judgment.myeloid_lymphoid_neoplasm",
+          "field": "dis.myeloid_neoplasms",
           "operator": "is_true",
-          "value": null
+          "value": true
+        },
+        {
+          "field": "dis.lymphoid_neoplasms",
+          "operator": "is_true",
+          "value": true
         }
       ]
     },
@@ -23,14 +28,14 @@
       "logic": "OR",
       "conditions": [
         {
-          "field": "fish.FLT3_rearrangement",
-          "operator": "is_positive",
-          "value": null
+          "field": "pcr.FLT3_rearrangement",
+          "operator": "is_true",
+          "value": true
         },
         {
-          "field": "judgment.FLT3_fusion_detected",
+          "field": "fish.FLT3_rearrangement",
           "operator": "is_true",
-          "value": null
+          "value": true
         }
       ]
     }
