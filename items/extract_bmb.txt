@@ -31,7 +31,7 @@
 - bmb.ihc_cd61: CD61表达状态（阳性/阴性/部分阳性）
 - bmb.ihc_cd41: CD41（CD41）
 - bmb.ihc_cd42b: CD42b（CD42b）
-- bmb.lysozyme:lysozyme
+- bmb.lysozyme: lysozyme（lysozyme）
 
 #复合计算字段
 

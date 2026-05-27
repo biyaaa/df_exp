@@ -52,7 +52,7 @@
 - bma.pox_result: 化学染色_POX（化学染色_POX）
 - bma.sbb_result: negative（negative）
 - bma.nae_result: 化学染色_NAE（化学染色_NAE）
-- bma.nse_result      :NSE 化学染色NSE
+- bma.nse_result: NSE 化学染色NSE（NSE 化学染色NSE）
 - bma.pas_result: 化学染色_PAS（化学染色_PAS）
 - bma.nae_naf_result: 化学染色_NAE+NaF（化学染色_NAE+NaF）
 - bma.ce_result: 化学染色_CE（化学染色_CE）
@@ -76,6 +76,38 @@
   分析: {bma.analysis} \n提取嗜碱性粒细胞是否增多，True/False/None， 未提及就是None
 - bma.prominent_eosinophilia: 嗜酸性粒细胞明显增多(bool)（依据: bma.analysis）
   分析: {bma.analysis}\n提取嗜碱性粒细胞是否明显增多，True/False/None， 未提及就是None
+- bma.neutrophilia: 中性粒细胞增多（依据: bma.analysis）
+  分析: {bma.analysis} 根据内容提取 \n中性粒细胞增多 True/False/None 注：未提及是None
+- bma.monocytosis: 单核细胞增多（依据: bma.analysis）
+  分析: {bma.analysis} 从中提取信息\n单核细胞增多 True/False/None,  注：未提及是none
+- bma.lymphocytosis: 淋巴细胞增多（依据: bma.lymphocytosis）
+  分析: {bma.lymphocytosis} 从中提取信息\淋巴细胞增多 True/False/None,  注：未提及是none
+- bma.thrombocytosis: 血小板增多（依据: bma.thrombocytosis）
+  分析: {bma.thrombocytosis} 从中提取信息\血小板增多 True/False/None,  注：未提及是none
+- bma.increased_promyelocytes: 早幼粒细胞增多（依据: bma.increased_promyelocytes）
+  分析: {bma.increased_promyelocytes} 从中提取信息\早幼粒细胞增多 True/False/None,  注：未提及是none
+- bma.increased_promonocytes: 早幼单核细胞增多（依据: bma.increased_promonocytes）
+  分析: {bma.increased_promonocytes} 从中提取信息\早幼单核细胞增多 True/False/None,  注：未提及是none
+- bma.increased_mast_cells: 早幼单核细胞增多（依据: bma.increased_mast_cells）
+  分析: {bma.increased_mast_cells} 从中提取信息\早幼单核细胞增多 True/False/None,  注：未提及是none
+- bma.plasmacytosis: 浆细胞增多（依据: bma.plasmacytosis）
+  分析: {bma.plasmacytosis} 从中提取信息\浆细胞增多 True/False/None,  注：未提及是none
+- bma.histiocytosis: 组织细胞增多（依据: bma.histiocytosis）
+  分析: {bma.histiocytosis} 从中提取信息\组织细胞增多 True/False/None,  注：未提及是none
+- bma.megakaryocytosis: 巨核细胞增多（依据: bma.megakaryocytosis）
+  分析: {bma.megakaryocytosis } 从中提取信息\巨核细胞增多 True/False/None,  注：未提及是none
+- bma.cytopenia: 血细胞减少（依据: bma.cytopenia）
+  分析: {bma.cytopenia } 从中提取信息\血细胞减少 True/False/None,  注：未提及是none
+- bma.unexplained_cytopenias: 不能解释的血细胞减少（依据: bma.unexplained_cytopenias）
+  分析: {bma.unexplained_cytopenias } 从中提取信息\不能解释的血细胞减少 True/False/None,  注：未提及是none
+- bma.neutropenia: 中性粒细胞减少（依据: bma.neutropenia）
+  分析: {bma.neutropenia } 从中提取信息\中性粒细胞减少 True/False/None,  注：未提及是none
+- bma.thrombocytopenia: 血小板减少（依据: bma.thrombocytopenia）
+  分析: {bma.thrombocytopenia } 从中提取信息\血小板减少 True/False/None,  注：未提及是none
+- bma.lymphopenia: 淋巴细胞减少（依据: bma.lymphopenia）
+  分析: {bma.lymphopenia} 从中提取信息\淋巴细胞减少 True/False/None,  注：未提及是none
+- bma.pancytopenia: 全血细胞减少（依据: bma.pancytopenia）
+  分析: {bma.pancytopenia} 从中提取信息\全血细胞减少 True/False/None,  注：未提及是none
 
 仅输出确定数据，纯 JSON 格式：
 

@@ -26,7 +26,7 @@
 - fcm.ihc_hla_dr: HLA-DR表达状态# 通用白细胞与干祖细胞（HLA-DR表达状态# 通用白细胞与干祖细胞）
 - fcm.ihc_cd2: CD2表达状态# T细胞相关（CD2表达状态# T细胞相关）
 - fcm.ihc_cd3: CD3表达状态# T细胞相关（CD3表达状态# T细胞相关）
-- fcm.ihc_ccd3: cCD3表达状态# T细胞相关（CD3表达状态# T细胞相关）
+- fcm.ihc_ccd3: cCD3表达状态# T细胞相关（cCD3表达状态# T细胞相关）
 - fcm.ihc_cd4: CD4表达状态# T细胞相关（CD4表达状态# T细胞相关）
 - fcm.ihc_cd5: CD5表达状态# T细胞相关（CD5表达状态# T细胞相关）
 - fcm.ihc_cd7: CD7表达状态# T细胞相关（CD7表达状态# T细胞相关）
@@ -58,7 +58,7 @@
 - fcm.ihc_cd123: CD123表达状态# 树突/嗜碱细胞相关（CD123表达状态# 树突/嗜碱细胞相关）
 - fcm.ihc_cd61: CD61表达状态（阳性/阴性/部分阳性）
 - fcm.ihc_cd42b: CD42b（CD42b）
-- fcm.MPO: 髓过氧化物酶（Myeloperoxidase，髓过氧化物酶）
+- fcm.MPO: 髓过氧化物酶（髓过氧化物酶）
 - fcm.result_description: 结果描述（结果描述）
 - fcm.impression: 意见（意见）
 
@@ -73,5 +73,13 @@
   说明: 髓系、T/B细胞系或混合表型原始细胞增多
 
 #复合分析字段
+- fcm.MPAL_B_lineage: MPAL B谱系表达（依据: fcm.impression）
+  分析: {fcm.impression} 在内容提取，是否满足MPAL的B谱系表达，结果True/False/None, 注：未提及为None
+- fcm.MPAL_T_lineage: MPAL T谱系表达（依据: fcm.impression）
+  分析: {fcm.impression} 在内容提取，是否满足MPAL的B谱系表达，结果True/False/None, 注：未提及为None
+- fcm.MPAL_M_lineage: MPAL M谱系表达（依据: fcm.impression）
+  分析: {fcm.impression} 在内容提取，是否满足MPAL的B谱系表达，结果True/False/None, 注：未提及为None
 
+- fcm.MPAL_two_more_lineage: MPAL多谱系表达（依据: fcm.impression）
+  分析: {fcm.impression} 在内容提取，是否满足MPAL多谱系表达，结果True/False/None, 注：未提及为None
 
