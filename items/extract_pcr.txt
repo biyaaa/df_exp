@@ -17,6 +17,8 @@
 - pcr.PDGFRA_rearrangement: PDGFRA重排（PDGFRA重排）
 - pcr.PDGFRB_rearrangement: PDGFRB重排（PDGFRB重排）
 - pcr.FGFR1_rearrangement: FGFR1重排（FGFR1重排）
+- pcr.ZNF384_rearrangement:ZNF384重排（ZNF384重排）
+- pcr.BCL11B_rearrangement:BCL11B重排（BCL11B重排）
 - pcr.PCM1_JAK2: PCM1::JAK2融合（PCM1::JAK2融合）
 - pcr.FIP1L1_PDGFRA: FIP1L1::PDGFRA融合（FIP1L1::PDGFRA融合）
 - pcr.NPM1_mutation: NPM1突变（true/false）
