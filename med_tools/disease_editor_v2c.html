@@ -332,6 +332,28 @@ textarea{resize:vertical;min-height:60px;line-height:1.5;}
   display:flex;align-items:center;gap:4px;transition:all .15s;
   font-family:var(--sans);margin-top:2px;}
 .add-condition-btn:hover{color:var(--accent);border-color:var(--accent);background:rgba(88,166,255,.05);}
+/* ── Condition Group (nested conditions) ── */
+.condition-group{border:1px solid var(--border2);border-left:3px solid var(--purple);border-radius:var(--r);background:var(--surface2);margin-bottom:2px;}
+.condition-group-header{display:flex;align-items:center;gap:6px;padding:6px 8px;border-bottom:1px solid var(--border2);}
+.condition-group-id{font-family:var(--mono);font-size:11px;width:140px;padding:3px 7px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r);color:var(--text);outline:none;}
+.condition-group-id:focus{border-color:var(--accent);}
+.condition-group-min{font-family:var(--mono);font-size:11px;width:60px;padding:3px 7px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r);color:var(--text);outline:none;}
+.condition-group-min:focus{border-color:var(--accent);}
+.condition-group-min::-webkit-inner-spin-button,
+.condition-group-min::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+.condition-group-min[type=number]{-moz-appearance:textfield;appearance:textfield;}
+.condition-group-min-label{font-size:10px;color:var(--text3);white-space:nowrap;}
+.condition-group-desc{font-size:11px;width:100%;min-height:28px;padding:4px 8px;background:var(--bg);border:none;border-bottom:1px solid var(--border2);color:var(--text);resize:vertical;outline:none;font-family:var(--sans);line-height:1.4;}
+.condition-group-desc:focus{background:var(--surface);}
+.condition-group-body{padding:6px 8px;display:flex;flex-direction:column;gap:5px;}
+.condition-group-actions{display:flex;gap:6px;}
+/* condition extra fields (threshold/note) */
+.cond-extra-row{display:flex;align-items:center;gap:6px;margin-top:3px;padding-left:2px;}
+.cond-threshold-input{flex:1;font-family:var(--mono);font-size:10px;padding:2px 6px;background:var(--bg);border:1px solid var(--border2);border-radius:3px;color:var(--text);outline:none;}
+.cond-threshold-input:focus{border-color:var(--accent);}
+.cond-note-input{flex:1;font-family:var(--sans);font-size:10px;padding:2px 6px;background:var(--bg);border:1px solid var(--border2);border-radius:3px;color:var(--text);outline:none;}
+.cond-note-input:focus{border-color:var(--accent);}
+.cond-extra-label{font-size:9px;color:var(--text3);white-space:nowrap;}
 .tag{display:inline-flex;align-items:center;padding:1px 7px;border-radius:20px;
   font-size:10px;font-family:var(--mono);border:1px solid;}
 .logic-and{background:var(--orange-dim);color:var(--orange);border-color:rgba(227,179,65,.4);}
@@ -379,6 +401,7 @@ textarea{resize:vertical;min-height:60px;line-height:1.5;}
 .field-combo-badge.computed{background:var(--orange-dim);color:var(--orange);}
 .field-combo-badge.analysis{background:var(--purple-dim);color:var(--purple);}
 .field-combo-badge.common{background:rgba(88,166,255,.1);color:var(--accent);}
+.field-combo-badge.diagnosis{background:rgba(248,81,73,.1);color:#f08080;}
 .field-combo-empty{padding:10px;font-size:11px;color:var(--text3);text-align:center;}
 
 /* DE sub-header */
@@ -1243,10 +1266,14 @@ const OPERATORS = [
   { v:'is_positive', l:'is_positive 阳性' },
   { v:'is_negative', l:'is_negative 阴性' },
   { v:'is_true',     l:'is_true 为真' },
+  { v:'is_strong_positive', l:'is_strong_positive 强阳性' },
+  { v:'is_weak_positive', l:'is_weak_positive 弱阳性' },
+  { v:'intensity_gt_pct_of_reference', l:'intensity_gt_pct_of_reference 强度>参考%' },
 ];
-const NO_VAL_OPS  = new Set(['not_null','is_positive','is_negative']);
+const NO_VAL_OPS  = new Set(['not_null','is_positive','is_negative','is_strong_positive','is_weak_positive','intensity_gt_pct_of_reference']);
 const NUMERIC_OPS = new Set(['>','>=','<','<=']);
 const BOOL_OPS    = new Set(['is_true']);
+const THRESHOLD_OPS = new Set(['is_strong_positive','is_weak_positive','intensity_gt_pct_of_reference']);
 
 const SCORING_LOGICS = [
   { v:'all_essential', l:'通用型 — all_essential' },
@@ -1380,7 +1407,7 @@ function FieldCombobox({ value, onChange }) {
     }
   };
 
-  const typeLabel = { raw: '原始', computed: '计算', analysis: '分析', common: '常用' };
+  const typeLabel = { raw: '原始', computed: '计算', analysis: '分析', common: '常用', diagnosis: '诊断项' };
 
   return (
     <div className="field-combo-wrap" ref={wrapRef}>
@@ -1388,7 +1415,7 @@ function FieldCombobox({ value, onChange }) {
         type="text"
         className="cond-field-input"
         value={query}
-        placeholder="字段名，如 bma.blast_equivalents_pct"
+        placeholder="字段名或诊断项，如 bma.blast_equivalents_pct 或 A073.A073_E1"
         onChange={handleInput}
         onFocus={() => setOpen(true)}
         onKeyDown={handleKeyDown}
@@ -1418,17 +1445,21 @@ function FieldCombobox({ value, onChange }) {
   );
 }
 
-// ── ConditionRow（问题002：field 输入改为 FieldCombobox）──
+// ── ConditionRow（支持 threshold/note，多级条件支持）──
 function ConditionRow({ cond, idx, logic, onChange, onDelete }) {
   const op      = cond.operator || '>=';
   const isNoVal = NO_VAL_OPS.has(op);
   const isBool  = BOOL_OPS.has(op);
   const isNum   = NUMERIC_OPS.has(op);
+  const showThreshold = THRESHOLD_OPS.has(op);
   const set = patch => onChange({ ...cond, ...patch });
   const handleOpChange = e => {
     const newOp = e.target.value;
-    set({ operator: newOp, value: defaultValForOp(newOp, cond.value) });
+    const patch = { operator: newOp, value: defaultValForOp(newOp, cond.value) };
+    if (!THRESHOLD_OPS.has(newOp) && cond.threshold !== undefined) patch.threshold = undefined;
+    onChange({ ...cond, ...patch });
   };
+  const hasExtra = showThreshold || cond.note != null;
   return (
     <>
       {idx > 0 && (
@@ -1436,32 +1467,97 @@ function ConditionRow({ cond, idx, logic, onChange, onDelete }) {
           <span className={`tag logic-${logic.toLowerCase()}`}>{logic}</span>
         </div>
       )}
-      <div className="condition-row">
-        <FieldCombobox value={cond.field || ''} onChange={v => set({ field: v })} />
-        <select className="cond-op-select" value={op} onChange={handleOpChange}>
-          {OPERATORS.map(o => <option key={o.v} value={o.v}>{o.l}</option>)}
-        </select>
-        {isNoVal ? (
-          <div className="cond-val-none">—</div>
-        ) : isBool ? (
-          <select
-            className="cond-val-input"
-            value={String(cond.value === true)}
-            onChange={e => set({ value: e.target.value === 'true' })}
-          >
-            <option value="true">true</option>
-            <option value="false">false</option>
+      <div>
+        <div className="condition-row">
+          <FieldCombobox value={cond.field || ''} onChange={v => set({ field: v })} />
+          <select className="cond-op-select" value={op} onChange={handleOpChange}>
+            {OPERATORS.map(o => <option key={o.v} value={o.v}>{o.l}</option>)}
           </select>
-        ) : (
-          <input
-            type={isNum ? 'number' : 'text'}
-            className="cond-val-input"
-            value={cond.value ?? ''}
-            placeholder={isNum ? '0' : 'value'}
-            onChange={e => set({ value: isNum ? (parseFloat(e.target.value)||0) : e.target.value })}
-          />
+          {isNoVal ? (
+            <div className="cond-val-none">—</div>
+          ) : isBool ? (
+            <select className="cond-val-input" value={String(cond.value === true)}
+              onChange={e => set({ value: e.target.value === 'true' })}>
+              <option value="true">true</option>
+              <option value="false">false</option>
+            </select>
+          ) : (
+            <input type={isNum ? 'number' : 'text'} className="cond-val-input"
+              value={cond.value ?? ''} placeholder={isNum ? '0' : 'value'}
+              onChange={e => set({ value: isNum ? (parseFloat(e.target.value)||0) : e.target.value })} />
+          )}
+          <button className="btn-icon" onClick={() => { if(cond.note==null) set({note:''}); }}
+            title="添加备注" style={{fontSize:'10px',opacity:cond.note!=null?.5:.25}}>💬</button>
+          <button className="btn-icon danger" onClick={onDelete} title="删除条件">×</button>
+        </div>
+        {hasExtra && (
+          <div className="cond-extra-row">
+            {showThreshold && (<>
+              <span className="cond-extra-label">阈值:</span>
+              <input type="text" className="cond-threshold-input" value={cond.threshold||''}
+                placeholder="如 gt50pct_normal_B_progenitor"
+                onChange={e=>set({threshold:e.target.value||undefined})}/>
+            </>)}
+            {cond.note!=null && (<>
+              <span className="cond-extra-label">备注:</span>
+              <input type="text" className="cond-note-input" value={cond.note}
+                placeholder="可选备注" onChange={e=>set({note:e.target.value})}
+                onBlur={e=>{if(!e.target.value.trim())set({note:undefined});}}/>
+            </>)}
+          </div>
         )}
-        <button className="btn-icon danger" onClick={onDelete} title="删除条件">×</button>
+      </div>
+    </>
+  );
+}
+
+// ── ConditionGroup（多级条件支持）──
+function ConditionGroup({ cond, idx, parentLogic, onChange, onDelete }) {
+  const { id='', description='', logic='OR', min_match, conditions=[] } = cond;
+  const set = patch => onChange({ ...cond, ...patch });
+  const updateSubCond = (i, updated) => set({ conditions: conditions.map((c,j)=>j===i?updated:c) });
+  const deleteSubCond = i => set({ conditions: conditions.filter((_,j)=>j!==i) });
+  const addLeafCond  = () => set({ conditions: [...conditions, { field:'', operator:'>=', value:0 }] });
+  const addGroupCond = () => set({ conditions: [...conditions, { id:'', description:'', logic:'OR', conditions:[] }] });
+  return (
+    <>
+      {idx > 0 && (
+        <div className="condition-connector">
+          <span className={`tag logic-${parentLogic.toLowerCase()}`}>{parentLogic}</span>
+        </div>
+      )}
+      <div className="condition-group">
+        <div className="condition-group-header">
+          <input type="text" className="condition-group-id" value={id}
+            placeholder="子条件组ID" onChange={e=>set({id:e.target.value})}/>
+          <select className="criterion-logic-select" value={logic} onChange={e=>set({logic:e.target.value})}>
+            <option value="OR">OR</option>
+            <option value="AND">AND</option>
+          </select>
+          <span className="condition-group-min-label">最少</span>
+          <input type="number" className="condition-group-min" value={min_match||''}
+            placeholder="—" min="1" onChange={e=>set({min_match:e.target.value?parseInt(e.target.value):undefined})}/>
+          <button className="btn-icon danger" onClick={onDelete} title="删除子条件组">×</button>
+        </div>
+        <textarea className="condition-group-desc" value={description}
+          placeholder="子条件描述…" onChange={e=>set({description:e.target.value})}/>
+        <div className="condition-group-body">
+          {conditions.map((sub, i) => (
+            Array.isArray(sub.conditions) ? (
+              <ConditionGroup key={i} cond={sub} idx={i} parentLogic={logic}
+                onChange={updated => updateSubCond(i, updated)}
+                onDelete={() => deleteSubCond(i)}/>
+            ) : (
+              <ConditionRow key={i} cond={sub} idx={i} logic={logic}
+                onChange={updated => updateSubCond(i, updated)}
+                onDelete={() => deleteSubCond(i)}/>
+            )
+          ))}
+          <div className="condition-group-actions">
+            <button className="add-condition-btn" onClick={addLeafCond}>＋ 添加条件</button>
+            <button className="add-condition-btn" onClick={addGroupCond}>＋ 添加子条件组</button>
+          </div>
+        </div>
       </div>
     </>
   );
@@ -1474,6 +1570,7 @@ function CriterionCard({ criterion, idx, total, onChange, onDelete, onMove }) {
   const updateCond = (i, updated) => set({ conditions: conditions.map((c,j)=>j===i?updated:c) });
   const deleteCond = i  => set({ conditions: conditions.filter((_,j)=>j!==i) });
   const addCond    = () => set({ conditions: [...conditions, { field:'', operator:'>=', value:0 }] });
+  const addGroupCond = () => set({ conditions: [...conditions, { id:'', description:'', logic:'OR', conditions:[] }] });
   return (
     <div className="criterion-card">
       <div className="criterion-header">
@@ -1487,6 +1584,9 @@ function CriterionCard({ criterion, idx, total, onChange, onDelete, onMove }) {
               <option value="OR">OR</option>
               <option value="AND">AND</option>
             </select>
+            <span className="condition-group-min-label">最少</span>
+            <input type="number" className="condition-group-min" value={criterion.min_match||''}
+              placeholder="—" min="1" onChange={e=>set({min_match:e.target.value?parseInt(e.target.value):undefined})}/>
           </div>
           <textarea className="criterion-desc" value={description}
             placeholder="描述 description…" onChange={e => set({ description: e.target.value })}/>
@@ -1499,11 +1599,20 @@ function CriterionCard({ criterion, idx, total, onChange, onDelete, onMove }) {
       </div>
       <div className="conditions-area">
         {conditions.map((cond, i) => (
-          <ConditionRow key={i} cond={cond} idx={i} logic={logic}
-            onChange={updated => updateCond(i, updated)}
-            onDelete={() => deleteCond(i)}/>
+          Array.isArray(cond.conditions) ? (
+            <ConditionGroup key={i} cond={cond} idx={i} parentLogic={logic}
+              onChange={updated => updateCond(i, updated)}
+              onDelete={() => deleteCond(i)}/>
+          ) : (
+            <ConditionRow key={i} cond={cond} idx={i} logic={logic}
+              onChange={updated => updateCond(i, updated)}
+              onDelete={() => deleteCond(i)}/>
+          )
         ))}
-        <button className="add-condition-btn" onClick={addCond}>＋ 添加条件</button>
+        <div className="condition-group-actions">
+          <button className="add-condition-btn" onClick={addCond}>＋ 添加条件</button>
+          <button className="add-condition-btn" onClick={addGroupCond}>＋ 添加子条件组</button>
+        </div>
       </div>
     </div>
   );
@@ -1555,23 +1664,25 @@ function CriteriaSection({ section, criteria, diseaseCode, onChange }) {
   );
 }
 
-// ── DiseaseEditor（增加 dmFieldsRich，通过 FieldsCtx 传递，移除旧 datalist）──
-function DiseaseEditor({ disease, isNew, onChange, onSave, onDelete, dmFields, dmFieldsRich }) {
+// ── DiseaseEditor（增加 dmFieldsRich / diagnosisItems，通过 FieldsCtx 传递，移除旧 datalist）──
+function DiseaseEditor({ disease, isNew, onChange, onSave, onDelete, dmFields, dmFieldsRich, diagnosisItems }) {
   const [jsonOpen, setJsonOpen] = useState(false);
   const logic    = disease.scoring_logic || 'all_essential';
   const sections = CRITERIA_SECTIONS[logic] || [];
   const set = patch => onChange({ ...disease, ...patch });
   const setLogic = v => onChange(ensureCriteriaKeys({ ...disease, scoring_logic: v }));
 
-  // 合并 DM 富字段 + 默认常用字段（默认字段作为兜底，不重复）
+  // 合并 DM 富字段 + 默认常用字段 + 其它疾病诊断项（默认字段作为兜底，不重复）
   const allRichFields = useMemo(() => {
     const dmRich = dmFieldsRich || [];
     const dmKeys = new Set(dmRich.map(f => f.key));
     const extras = COMMON_FIELDS_DEFAULT
       .filter(k => !dmKeys.has(k))
       .map(k => ({ key: k, label: '', type: 'common' }));
-    return [...dmRich, ...extras];
-  }, [dmFieldsRich]);
+    const diagItems = (diagnosisItems || [])
+      .filter(d => !dmKeys.has(d.key) && !d.key.startsWith(`${disease.disease_code}.`));
+    return [...dmRich, ...extras, ...diagItems];
+  }, [dmFieldsRich, diagnosisItems, disease.disease_code]);
 
   return (
     <FieldsCtx.Provider value={allRichFields}>
@@ -1669,6 +1780,26 @@ function App() {
   const [confirm,       setConfirm]       = useState(null);
   const [dmFields,      setDmFields]      = useState(window.DM_FIELDS      || []);  // 数据管理字段（key 列表）
   const [dmFieldsRich,  setDmFieldsRich]  = useState(window.DM_FIELDS_RICH || []);  // 数据管理字段（富对象，问题002）
+
+  // 从所有已加载疾病中提取诊断项，供条件字段引用
+  const diagnosisItems = useMemo(() => {
+    const items = [];
+    const allSectionKeys = ['essential_criteria','desirable_criteria','major_criteria','minor_criteria','required_criteria','pass_conditions'];
+    diseases.forEach(d => {
+      if (!d.disease_code) return;
+      allSectionKeys.forEach(sk => {
+        (d[sk] || []).forEach(c => {
+          if (!c.id) return;
+          const key = `${d.disease_code}.${c.id}`;
+          const labelParts = [];
+          if (d.disease_name_zh) labelParts.push(d.disease_name_zh);
+          if (c.description) labelParts.push(c.description);
+          items.push({ key, label: labelParts.join(' - '), type: 'diagnosis' });
+        });
+      });
+    });
+    return items;
+  }, [diseases]);
 
   /* 接收数据管理模块的字段更新（问题002：同步富字段）*/
   useEffect(() => {
@@ -1833,6 +1964,7 @@ function App() {
               onDelete={handleDelete}
               dmFields={dmFields}
               dmFieldsRich={dmFieldsRich}
+              diagnosisItems={diagnosisItems}
             />
           ) : (
             <div className="empty-state">

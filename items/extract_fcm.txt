@@ -26,6 +26,7 @@
 - fcm.ihc_hla_dr: HLA-DR表达状态# 通用白细胞与干祖细胞（HLA-DR表达状态# 通用白细胞与干祖细胞）
 - fcm.ihc_cd2: CD2表达状态# T细胞相关（CD2表达状态# T细胞相关）
 - fcm.ihc_cd3: CD3表达状态# T细胞相关（CD3表达状态# T细胞相关）
+- fcm.ihc_ccd3: cCD3表达状态# T细胞相关（CD3表达状态# T细胞相关）
 - fcm.ihc_cd4: CD4表达状态# T细胞相关（CD4表达状态# T细胞相关）
 - fcm.ihc_cd5: CD5表达状态# T细胞相关（CD5表达状态# T细胞相关）
 - fcm.ihc_cd7: CD7表达状态# T细胞相关（CD7表达状态# T细胞相关）
@@ -35,6 +36,7 @@
 - fcm.ihc_cd19: CD19表达状态# B细胞相关（CD19表达状态# B细胞相关）
 - fcm.ihc_cd20: CD20表达状态# B细胞相关（CD20表达状态# B细胞相关）
 - fcm.ihc_cd10: CD10表达状态# B细胞相关（CD10表达状态# B细胞相关）
+- fcm.ihc_cd22: CD23表达状态# B细胞相关（CD23表达状态# B细胞相关）
 - fcm.ihc_cd23: CD23表达状态# B细胞相关（CD23表达状态# B细胞相关）
 - fcm.ihc_cd79a: CD79a表达状态# B细胞相关（CD79a表达状态# B细胞相关）
 - fcm.ihc_cd79b: CD79b表达状态# B细胞相关（CD79b表达状态# B细胞相关）
@@ -56,6 +58,7 @@
 - fcm.ihc_cd123: CD123表达状态# 树突/嗜碱细胞相关（CD123表达状态# 树突/嗜碱细胞相关）
 - fcm.ihc_cd61: CD61表达状态（阳性/阴性/部分阳性）
 - fcm.ihc_cd42b: CD42b（CD42b）
+- fcm.MPO: 髓过氧化物酶（Myeloperoxidase，髓过氧化物酶）
 - fcm.result_description: 结果描述（结果描述）
 - fcm.impression: 意见（意见）
 

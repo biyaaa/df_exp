@@ -52,6 +52,7 @@
 - bma.pox_result: 化学染色_POX（化学染色_POX）
 - bma.sbb_result: negative（negative）
 - bma.nae_result: 化学染色_NAE（化学染色_NAE）
+- bma.nse_result      :NSE 化学染色NSE
 - bma.pas_result: 化学染色_PAS（化学染色_PAS）
 - bma.nae_naf_result: 化学染色_NAE+NaF（化学染色_NAE+NaF）
 - bma.ce_result: 化学染色_CE（化学染色_CE）
