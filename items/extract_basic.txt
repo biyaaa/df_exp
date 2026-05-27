@@ -14,9 +14,11 @@
 #复合计算字段
 
 #复合分析字段
-- basic.prior_cytotoxic_therapy: 既往细胞毒性治疗史
-- basic.prior_myeloid_neoplasm: 既往髓系肿瘤史
-- basic.family_history_blood_disease: 血液病家族史
+- basic.prior_cytotoxic_therapy: 有无既往细胞毒性治疗史
+- basic.prior_myeloid_neoplasm: 有无既往髓系肿瘤史
+- basic.family_history_blood_disease: 有无血液病家族史
+- basic.prior_myeloproliferative_neoplasm: 有无既往骨髓增殖性肿瘤病史（依据: basic.past_history）
+  分析: {basic.past_history} 提取 有无骨髓增殖性肿瘤病史内容\nTrue/False
 
 仅输出确定的字段，不要猜测，格式为纯 JSON：
 

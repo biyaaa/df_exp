@@ -56,9 +56,14 @@
 - fcm.ihc_cd41: CD41表达状态# 巨核/红系相关（CD41表达状态# 巨核/红系相关）
 - fcm.ihc_cd71: CD71表达状态# 巨核/红系相关（CD71表达状态# 巨核/红系相关）
 - fcm.ihc_cd123: CD123表达状态# 树突/嗜碱细胞相关（CD123表达状态# 树突/嗜碱细胞相关）
+- fcm.ihc_tcf4: TCF4# 树突pDC（TCF4# 树突/嗜碱细胞相关）
+- fcm.ihc_tcl1: TCL1# 树突pDC（TCL1# 树突/嗜碱细胞相关）
+- fcm.ihc_cd303: CD303# 树突pDC（CD303# 树突/嗜碱细胞相关）
+- fcm.ihc_cd304: CD304# 树突pDC（CD304# 树突/嗜碱细胞相关）
 - fcm.ihc_cd61: CD61表达状态（阳性/阴性/部分阳性）
 - fcm.ihc_cd42b: CD42b（CD42b）
 - fcm.MPO: 髓过氧化物酶（髓过氧化物酶）
+- fcm.Lysozyme: Lysozyme（Lysozyme）
 - fcm.result_description: 结果描述（结果描述）
 - fcm.impression: 意见（意见）
 
@@ -79,7 +84,7 @@
   分析: {fcm.impression} 在内容提取，是否满足MPAL的B谱系表达，结果True/False/None, 注：未提及为None
 - fcm.MPAL_M_lineage: MPAL M谱系表达（依据: fcm.impression）
   分析: {fcm.impression} 在内容提取，是否满足MPAL的B谱系表达，结果True/False/None, 注：未提及为None
-
 - fcm.MPAL_two_more_lineage: MPAL多谱系表达（依据: fcm.impression）
   分析: {fcm.impression} 在内容提取，是否满足MPAL多谱系表达，结果True/False/None, 注：未提及为None
+
 
